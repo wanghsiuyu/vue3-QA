@@ -131,26 +131,10 @@
   <!-- 暢銷餐點 start -->
   <div class="hot-food-bg bg-size-contain bg-no-repeat py-8 py-lg-20">
     <div class="text-center">
-      <h2 class="block-title position-relative fs-3 fs-lg-2 fw-lg-bold mb-5 mb-lg-6">暢銷餐點</h2>
+      <h2 class="block-title position-relative fs-3 fs-lg-2 fw-lg-bold mb-5 mb-lg-10">暢銷餐點</h2>
     </div>
-    <div>
-      <div class="container">
-        <swiper :slides-per-view="4" :space-between="40" :modules="modules" navigation :loop="true" :breakpoints="swiperOptions.breakpoints">
-          <swiper-slide v-for="i in 10" :key="i + 123">
-            <img
-              src="https://images.unsplash.com/photo-1494597564530-871f2b93ac55?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80"
-              alt=""
-              class="img-fluid rounded-3 object-fit-cover mb-4"
-              style="height: 200px"
-            />
-            <h5 class="mb-3"><span v-for="i in 4" :key="i + 123" class="badge bg-primary-light text-primary px-2 py-1 me-2">純素</span></h5>
-            <h4 class="mb-3">莓果繽紛燕麥盆</h4>
-            <h5 class="text-primary mb-4 d-flex align-items-center">
-              NT$330 <span class="fs-6 text-gray-dark ms-2"><del>NT$360</del></span>
-            </h5>
-          </swiper-slide>
-        </swiper>
-      </div>
+    <div class="container position-relative mb-5 mb-lg-10">
+      <SwiperHotFood></SwiperHotFood>
     </div>
     <div class="text-center">
       <a href="#/products" class="btn btn-primary fs-lg-5 px-5 py-3 px-lg-6">更多餐點</a>
@@ -158,13 +142,21 @@
   </div>
   <!-- 暢銷餐點 end -->
   <!-- 好評推薦 start -->
-
+  <div class="bg-primary-light py-8 py-lg-20">
+    <div class="text-center">
+      <h2 class="block-title position-relative fs-3 fs-lg-2 fw-lg-bold mb-5 mb-lg-10" style="z-index: 0">好評推薦</h2>
+    </div>
+    <div class="container">
+      <SwiperComment></SwiperComment>
+    </div>
+  </div>
+  <!-- <div class="swiper-pagination"></div> -->
   <!-- 好評推薦 end -->
   <!-- 常見問題 start -->
   <!-- 常見問題 end -->
 </template>
 <style lang="scss">
-  // banner
+  // banner start
   .home-banner {
     height: 598px;
     background-image: url(@/assets/image/banner-home-sm.png);
@@ -179,7 +171,8 @@
       height: 200px;
     }
   }
-  // 每個區塊 title
+  // banner end
+  // 每個區塊 title 偽元素 start
   .block-title {
     display: inline-block;
     &::after {
@@ -191,7 +184,7 @@
       background-image: url(@/assets/image/title.svg);
       top: -17px;
       right: -20px;
-      z-index: -10;
+      z-index: -1;
       @include mobile() {
         width: 102px;
         height: 77px;
@@ -200,7 +193,8 @@
       }
     }
   }
-  // 七大堅持
+  // 每個區塊 title 偽元素 end
+  // 七大堅持 start
   .feature-bg {
     @include mobile() {
       background-position: -50px -50px, 102% 109%;
@@ -224,79 +218,98 @@
       left: -20px;
     }
   }
-  // 暢銷餐點
+  // 七大堅持 end
+  // 暢銷餐點 start
   .hot-food-bg {
-    background-image: url(@/assets/image/hot-food-bg.svg);
+    background-image: url(@/assets/image/hot-food-bg-sm.svg);
     background-position: bottom right;
+    @include mobile() {
+      background-image: url(@/assets/image/hot-food-bg.svg);
+    }
   }
-  .swiper {
-    width: 1296px;
-    height: 337px;
-  }
-  // .swiper-slide img {
-  //   display: block;
-  //   width: 100%;
-  //   height: 200px;
-  //   object-fit: cover;
-  // }
-  // .swiper-pagination-bullet {
-  //   width: 20px;
-  //   height: 20px;
-  //   text-align: center;
-  //   line-height: 20px;
-  //   font-size: 12px;
-  //   color: #000;
-  //   opacity: 1;
-  //   background: rgba(0, 0, 0, 0.2);
-  // }
-
-  // .swiper-pagination-bullet-active {
-  //   color: #fff;
-  //   background: #007aff;
-  // }
+  // 暢銷餐點 end
+  // 好評推薦 start
+  // 好評推薦 end
+  // 常見問題 start
+  // 常見問題 end
 </style>
 <script>
-  import { Swiper, SwiperSlide } from 'swiper/vue';
-  import { Navigation, Pagination } from 'swiper';
+  // import { RouterLink } from 'vue-router';
+  // import { Swiper, SwiperSlide } from 'swiper/vue';
+  // import { Autoplay, Navigation, Pagination } from 'swiper';
+  import SwiperComment from '@/components/frontend/SwiperComment.vue';
+  import SwiperHotFood from '@/components/frontend/SwiperHotFood.vue';
 
   // Import Swiper styles
-  import 'swiper/css';
-  import 'swiper/css/navigation';
-  import 'swiper/css/pagination';
+  // import 'swiper/css';
+  // import 'swiper/css/navigation';
+  // import 'swiper/css/pagination';
+
+  // const { VITE_URL, VITE_PATH } = import.meta.env;
 
   export default {
-    data() {
-      return {
-        modules: [Navigation, Pagination],
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
-        swiperOptions: {
-          breakpoints: {
-            992: {
-              slidesPerView: 4,
-              spaceBetween: 40,
-            },
-            640: {
-              slidesPerView: 2,
-              spaceBetween: 20,
-            },
-
-            375: {
-              slidesPerView: 1,
-              spaceBetween: 10,
-            },
-            // 0: {
-            //   slidesPerView: 1,
-            // },
-          },
-        },
-      };
-    },
+    // data() {
+    //   return {
+    //     modules: [Navigation, Pagination, Autoplay],
+    //     navigation: {
+    //       nextEl: '.swiper-button-next',
+    //       prevEl: '.swiper-button-prev',
+    //     },
+    //     swiperOptions: {
+    //       breakpoints: {
+    //         1200: {
+    //           slidesPerView: 4,
+    //           spaceBetween: 40,
+    //         },
+    //         576: {
+    //           slidesPerView: 3,
+    //           spaceBetween: 30,
+    //         },
+    //         376: {
+    //           slidesPerView: 2,
+    //           spaceBetween: 20,
+    //         },
+    //         0: {
+    //           slidesPerView: 1.58,
+    //           spaceBetween: 16,
+    //         },
+    //       },
+    //     },
+    //     products: [],
+    //     tempProduct: {},
+    //   };
+    // },
     components: {
-      Swiper,
-      SwiperSlide,
+      // Swiper,
+      // SwiperSlide,
+      // RouterLink,
+      SwiperComment,
+      SwiperHotFood,
     },
+    // methods: {
+    //   getProducts() {
+    //     this.$http
+    //       .get(`${VITE_URL}/api/${VITE_PATH}/products/all`)
+    //       .then((res) => {
+    //         this.products = res.data.products;
+    //       })
+    //       .catch((err) => {
+    //         alert(err.response.data.message);
+    //       });
+    //   },
+    //   getProduct(id) {
+    //     this.$http
+    //       .get(`${VITE_URL}/api/${VITE_PATH}/product/${id}`)
+    //       .then((res) => {
+    //         this.tempProduct = res.data.product;
+    //       })
+    //       .catch((err) => {
+    //         alert(err.response.data.message);
+    //       });
+    //   },
+    // },
+    // mounted() {
+    //   this.getProducts();
+    // },
   };
 </script>

@@ -3,3 +3,13 @@
     @content;
   }
 }
+@mixin xl {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+@mixin xxl {
+  @media (min-width: 1400px) {
+    @content;
+  }
+}

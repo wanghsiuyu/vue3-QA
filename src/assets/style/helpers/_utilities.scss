@@ -757,6 +757,7 @@ $utilities: map-merge(
     ),
     'background-size': (
       property: background-size,
+      responsive: true,
       class: bg-size,
       values: (
         cover,

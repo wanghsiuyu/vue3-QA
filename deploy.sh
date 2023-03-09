@@ -21,7 +21,7 @@ git add -A
 git commit -m 'deploy'
 
 
-git push -f https://github.com/wanghsiuyu/2023-vue3-week7-dashboard.git master:gh-pages
+git push -f https://github.com/wanghsiuyu/vue3-QA.git master:gh-pages
 
 
 cd -
