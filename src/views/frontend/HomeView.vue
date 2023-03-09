@@ -150,9 +150,95 @@
       <SwiperComment></SwiperComment>
     </div>
   </div>
-  <!-- <div class="swiper-pagination"></div> -->
   <!-- 好評推薦 end -->
   <!-- 常見問題 start -->
+  <div class="bg-light py-8 py-lg-20">
+    <div class="text-center">
+      <h2 class="block-title position-relative fs-3 fs-lg-2 fw-lg-bold mb-5 mb-lg-10" style="z-index: 0">常見問題</h2>
+    </div>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="accordion accordion-flush" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                  <div class="d-flex flex-column align-items-start">
+                    <p class="text-dark fs-4 mb-0">餐廳是否有提供訂位服務？</p>
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                      <div class="accordion-body text-gray-dark ps-0 pe-4 pb-0">目前僅提供一個禮拜前訂位，訂位專線：06-2345678</div>
+                    </div>
+                  </div>
+                </button>
+              </h2>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="heading2">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                  <div class="d-flex flex-column align-items-start">
+                    <p class="text-dark fs-4 mb-0">請問消費有提供刷卡服務嗎</p>
+                    <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                      <div class="accordion-body text-gray-dark ps-0 pe-4 pb-0">在店內用餐僅能以現金付費，線上訂購有提供刷卡服務。</div>
+                    </div>
+                  </div>
+                </button>
+              </h2>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="heading3">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                  <div class="d-flex flex-column align-items-start">
+                    <p class="text-dark fs-4 mb-0">請問餐廳可以攜帶寵物嗎？</p>
+                    <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                      <div class="accordion-body text-gray-dark ps-0 pe-4 pb-0">我們是寵物友善餐廳，歡迎攜帶寵物入內用餐。</div>
+                    </div>
+                  </div>
+                </button>
+              </h2>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="heading2">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse">
+                  <div class="d-flex flex-column align-items-start">
+                    <p class="text-dark fs-4 mb-0">餐廳附近是否有停車格或停車場</p>
+                    <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                      <div class="accordion-body text-gray-dark ps-0 pe-4 pb-0">餐廳正後方有附設停車場，在店內用餐即可免費停車。</div>
+                    </div>
+                  </div>
+                </button>
+              </h2>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="heading2">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse2">
+                  <div class="d-flex flex-column align-items-start">
+                    <p class="text-dark fs-4 mb-0">線上訂購的運費如何計算？</p>
+                    <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                      <div class="accordion-body text-gray-dark ps-0 pe-4 pb-0">
+                        我們提供外送的地區是台南市東區、中西區、永康區、安平區、南區、北區、仁德區、安南區，運費是 100 元，消費滿 500 元免運費。
+                      </div>
+                    </div>
+                  </div>
+                </button>
+              </h2>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="heading2">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse2">
+                  <div class="d-flex flex-column align-items-start">
+                    <p class="text-dark fs-4 mb-0">可以到店取餐嗎？</p>
+                    <div id="collapse6" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                      <div class="accordion-body text-gray-dark ps-0 pe-4 pb-0">可以，我們的地址是：台南市東區樂活路 59 號，餐點都是現點現做，建議提前 60~90 分鐘預訂餐點，以免久候。</div>
+                    </div>
+                  </div>
+                </button>
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- 常見問題 end -->
 </template>
 <style lang="scss">
@@ -228,9 +314,46 @@
     }
   }
   // 暢銷餐點 end
-  // 好評推薦 start
-  // 好評推薦 end
   // 常見問題 start
+  .accordion-button {
+    padding: 20px 24px;
+    border: 2px solid transparent;
+  }
+  .accordion-button.collapsed {
+    border: 2px solid transparent;
+  }
+  .accordion-button:not(.collapsed) {
+    background-color: #fafafa;
+    box-shadow: none;
+    border: 2px solid #dfebe3;
+  }
+
+  .accordion-flush .accordion-item .accordion-button,
+  .accordion-flush .accordion-item .accordion-button.collapsed {
+    border-radius: 8px;
+  }
+  .accordion-button {
+    background-color: #fafafa;
+  }
+  // 取消按鈕 focus 樣式
+  .accordion-button:focus {
+    box-shadow: none;
+  }
+  // icon
+  .accordion-button:not(.collapsed)::after {
+    width: 32px;
+    height: 32px;
+    background-size: contain;
+  }
+  .accordion-button::after {
+    width: 32px;
+    height: 32px;
+    background-size: contain;
+  }
+  .accordion-item {
+    border: 0px solid transparent;
+  }
+
   // 常見問題 end
 </style>
 <script>
