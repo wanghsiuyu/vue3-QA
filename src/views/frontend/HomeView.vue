@@ -250,6 +250,11 @@
     </div>
   </div>
   <!-- 常見問題 end -->
+  <!-- Go to Top start -->
+  <!-- <div class="position-relative"> -->
+  <a href="#"><img src="@/assets/image/top.svg" alt="top" class="position-fixed topBtn" /></a>
+  <!-- </div> -->
+  <!-- Go to Top end -->
 </template>
 <style lang="scss">
   // banner start
@@ -366,86 +371,26 @@
   .accordion-item {
     border: 0px solid transparent;
   }
-
   // 常見問題 end
+  .topBtn {
+    width: 56px;
+    height: 56px;
+    bottom: 80px;
+    right: 10px;
+    z-index: 100;
+    @include mobile() {
+      width: 100px;
+      height: 100px;
+    }
+  }
 </style>
 <script>
-  // import { RouterLink } from 'vue-router';
-  // import { Swiper, SwiperSlide } from 'swiper/vue';
-  // import { Autoplay, Navigation, Pagination } from 'swiper';
   import SwiperComment from '@/components/frontend/SwiperComment.vue';
   import SwiperHotFood from '@/components/frontend/SwiperHotFood.vue';
-
-  // Import Swiper styles
-  // import 'swiper/css';
-  // import 'swiper/css/navigation';
-  // import 'swiper/css/pagination';
-
-  // const { VITE_URL, VITE_PATH } = import.meta.env;
-
   export default {
-    // data() {
-    //   return {
-    //     modules: [Navigation, Pagination, Autoplay],
-    //     navigation: {
-    //       nextEl: '.swiper-button-next',
-    //       prevEl: '.swiper-button-prev',
-    //     },
-    //     swiperOptions: {
-    //       breakpoints: {
-    //         1200: {
-    //           slidesPerView: 4,
-    //           spaceBetween: 40,
-    //         },
-    //         576: {
-    //           slidesPerView: 3,
-    //           spaceBetween: 30,
-    //         },
-    //         376: {
-    //           slidesPerView: 2,
-    //           spaceBetween: 20,
-    //         },
-    //         0: {
-    //           slidesPerView: 1.58,
-    //           spaceBetween: 16,
-    //         },
-    //       },
-    //     },
-    //     products: [],
-    //     tempProduct: {},
-    //   };
-    // },
     components: {
-      // Swiper,
-      // SwiperSlide,
-      // RouterLink,
       SwiperComment,
       SwiperHotFood,
     },
-    // methods: {
-    //   getProducts() {
-    //     this.$http
-    //       .get(`${VITE_URL}/api/${VITE_PATH}/products/all`)
-    //       .then((res) => {
-    //         this.products = res.data.products;
-    //       })
-    //       .catch((err) => {
-    //         alert(err.response.data.message);
-    //       });
-    //   },
-    //   getProduct(id) {
-    //     this.$http
-    //       .get(`${VITE_URL}/api/${VITE_PATH}/product/${id}`)
-    //       .then((res) => {
-    //         this.tempProduct = res.data.product;
-    //       })
-    //       .catch((err) => {
-    //         alert(err.response.data.message);
-    //       });
-    //   },
-    // },
-    // mounted() {
-    //   this.getProducts();
-    // },
   };
 </script>
