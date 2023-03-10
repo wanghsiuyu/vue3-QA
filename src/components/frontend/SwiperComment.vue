@@ -174,7 +174,7 @@
               slidesPerView: 1.2,
               spaceBetween: 16,
             },
-            376: {
+            375: {
               slidesPerView: 1,
               spaceBetween: 12,
             },
