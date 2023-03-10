@@ -1,6 +1,6 @@
 <template>
   <!-- banner start-->
-  <div class="mt-14 mt-lg-20">
+  <section class="mt-14 mt-lg-20">
     <div class="home-banner bg-position-center bg-size-cover bg-no-repeat d-flex flex-column justify-content-center align-items-center px-6 px-lg-0">
       <div class="d-flex flex-column justify-content-center align-items-center px-6 py-10 px-lg-10" style="background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(8px); border-radius: 24px">
         <img src="@/assets/image/logo1.png" alt="logo" width="160" height="160" class="home-banner-logo mb-6" />
@@ -9,10 +9,10 @@
         <a href="#/products" class="btn btn-primary fs-lg-5 px-5 py-3 px-lg-6">立即訂餐</a>
       </div>
     </div>
-  </div>
+  </section>
   <!-- banner end-->
   <!-- 七大堅持 start -->
-  <div class="feature-bg bg-no-repeat py-8 py-lg-20">
+  <section class="feature-bg bg-no-repeat py-8 py-lg-20">
     <div class="container">
       <div class="text-center">
         <h2 class="block-title position-relative fs-3 fs-lg-2 fw-lg-bold mb-4 mb-lg-6">七大堅持</h2>
@@ -126,10 +126,10 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
   <!-- 七大堅持 end -->
   <!-- 暢銷餐點 start -->
-  <div class="hot-food-bg bg-size-contain bg-no-repeat py-8 py-lg-20">
+  <section class="hot-food-bg bg-size-contain bg-no-repeat py-8 py-lg-20">
     <div class="text-center">
       <h2 class="block-title position-relative fs-3 fs-lg-2 fw-lg-bold mb-5 mb-lg-10">暢銷餐點</h2>
     </div>
@@ -139,20 +139,20 @@
     <div class="text-center">
       <a href="#/products" class="btn btn-primary fs-lg-5 px-5 py-3 px-lg-6">更多餐點</a>
     </div>
-  </div>
+  </section>
   <!-- 暢銷餐點 end -->
   <!-- 好評推薦 start -->
-  <div class="bg-primary-light py-8 py-lg-20">
+  <section class="bg-primary-light py-8 py-lg-20">
     <div class="text-center">
       <h2 class="block-title position-relative fs-3 fs-lg-2 fw-lg-bold mb-5 mb-lg-10" style="z-index: 0">好評推薦</h2>
     </div>
     <div class="container">
       <SwiperComment></SwiperComment>
     </div>
-  </div>
+  </section>
   <!-- 好評推薦 end -->
   <!-- 常見問題 start -->
-  <div class="bg-light py-8 py-lg-20">
+  <section class="py-8 py-lg-20">
     <div class="text-center">
       <h2 class="block-title position-relative fs-3 fs-lg-2 fw-lg-bold mb-5 mb-lg-10" style="z-index: 0">常見問題</h2>
     </div>
@@ -248,12 +248,42 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
   <!-- 常見問題 end -->
+  <!-- 門市資訊 start -->
+  <section class="py-8 py-lg-20" id="location">
+    <div class="text-center">
+      <h2 class="block-title position-relative fs-3 fs-lg-2 fw-lg-bold mb-5 mb-lg-10" style="z-index: 0">門市資訊</h2>
+    </div>
+    <div class="container">
+      <div class="row justify-content-center flex-column flex-lg-row">
+        <div class="col-lg-4 fs-6 fs-lg-5 text-center text-lg-start">
+          <img src="@/assets/image/logo1.png" alt="logo" width="100" height="100" class="mb-4" />
+          <p>台南市東區樂活路 59 號</p>
+          <p>訂位 / 06-2345678</p>
+          <p>週二 - 週日 / 10:30 am - 20:30 pm</p>
+          <p>餐點供應至 20:00 pm</p>
+          <p>週一公休</p>
+          <p>店內禁帶外食，感謝配合</p>
+        </div>
+        <div class="col-lg-4">
+          <div class="store mb-4"></div>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.1736935595773!2d120.17949669414736!3d23.01739387434223!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346e77637a953ce7%3A0x5932de1ec2587f13!2z5qiC5rS76Lev!5e0!3m2!1szh-TW!2stw!4v1678418669447!5m2!1szh-TW!2stw"
+            width="100%"
+            height="175"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- 門市資訊 end -->
   <!-- Go to Top start -->
-  <!-- <div class="position-relative"> -->
   <a href="#"><img src="@/assets/image/top.svg" alt="top" class="position-fixed topBtn" /></a>
-  <!-- </div> -->
   <!-- Go to Top end -->
 </template>
 <style lang="scss">
@@ -372,6 +402,16 @@
     border: 0px solid transparent;
   }
   // 常見問題 end
+  // 門市資訊 start
+  .store {
+    background-image: url(@/assets/image/store.png);
+    height: 175px;
+    width: 100%;
+    background-size: cover;
+    background-position: center 0px;
+  }
+  // 門市資訊 end
+  // Go to Top start
   .topBtn {
     width: 56px;
     height: 56px;
@@ -383,6 +423,7 @@
       height: 100px;
     }
   }
+  // Go to Top end
 </style>
 <script>
   import SwiperComment from '@/components/frontend/SwiperComment.vue';

@@ -41,10 +41,10 @@
             <RouterLink to="/products" class="nav-link fs-lg-5 pt-3 mx-5 d-inline-block">線上訂餐</RouterLink>
           </li>
           <li class="nav-item mb-4 mb-lg-0">
-            <a class="nav-link fs-lg-5 pt-3 mx-5 d-inline-block" href="#">門市資訊</a>
+            <a class="nav-link fs-lg-5 pt-3 mx-5 d-inline-block" href="#">常見問題</a>
           </li>
           <li class="nav-item mb-4 mb-lg-0">
-            <a class="nav-link fs-lg-5 pt-3 mx-5 d-inline-block" href="#">常見問題</a>
+            <RouterLink class="nav-link fs-lg-5 pt-3 mx-5 d-inline-block" to="/#location">門市資訊</RouterLink>
           </li>
         </ul>
       </div>
@@ -60,9 +60,11 @@
     </div>
   </nav>
   <!-- navbar end-->
-  <RouterView></RouterView>
+  <main>
+    <RouterView></RouterView>
+  </main>
   <!-- footer start -->
-  <div class="bg-white">
+  <footer class="bg-white">
     <div class="container py-8">
       <div class="d-lg-flex justify-content-between align-items-center pb-6 pb-lg-4 border-bottom">
         <div class="d-flex flex-lg-column justify-content-between mb-8 mb-lg-0">
@@ -125,7 +127,7 @@
         <p class="mb-0">本網站僅作為個人練習作品，無任何商業用途</p>
       </div>
     </div>
-  </div>
+  </footer>
   <!-- footer end -->
 </template>
 
