@@ -26,10 +26,21 @@
         <!-- 產品 nav-tabs start-->
         <ul class="nav sticky-top bg-light mb-6 nav-tab-top" id="myTab" role="tablist">
           <li class="nav-item" role="presentation">
-            <a class="nav-link active text-dark px-1 mx-2" id="all-tab" data-bs-toggle="tab" data-bs-target="#all" type="button" role="tab" aria-controls="all" aria-selected="true"> 全部商品 </a>
+            <a class="nav-link active fs-6 fs-lg-5 text-dark px-1 mx-2" id="all-tab" data-bs-toggle="tab" data-bs-target="#all" href="#" role="tab" aria-controls="all" aria-selected="true">
+              全部商品
+            </a>
           </li>
           <li v-for="tab in categoriesTabs" class="nav-item" role="presentation" :key="tab">
-            <a class="nav-link text-dark px-1 mx-2" :id="`${tab[1]}-tab`" data-bs-toggle="tab" :data-bs-target="`#${tab[1]}`" href="#" role="tab" aria-controls="bowl" aria-selected="false">
+            <a
+              class="nav-link fs-6 fs-lg-5 text-dark px-1 mx-2"
+              :id="`${tab[1]}-tab`"
+              data-bs-toggle="tab"
+              :data-bs-target="`#${tab[1]}`"
+              href="#"
+              role="tab"
+              aria-controls="bowl"
+              aria-selected="false"
+            >
               {{ tab[0] }}
             </a>
           </li>
