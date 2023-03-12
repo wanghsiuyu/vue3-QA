@@ -147,14 +147,18 @@
   </section>
 </template>
 <script>
+  import { mapState, mapActions } from 'pinia';
+  // import productsStore from '@/store/productsStore.js';
+  import loadingStore from '@/store/loadingStore.js';
+  import cartsStore from '@/store/cartsStore.js';
   const { VITE_URL, VITE_PATH } = import.meta.env;
   export default {
     data() {
       return {
-        isLoading: false,
-        loadingStatus: '',
-        cartsTotal: [],
-        shipping: 0,
+        //   isLoading: false,
+        //   loadingStatus: '',
+        //   cartsTotal: [],
+        //   shipping: 0,
         user: {
           name: '',
           email: '',
@@ -165,64 +169,66 @@
       };
     },
     methods: {
-      loading() {
-        this.isLoading = true;
-        setTimeout(() => {
-          this.isLoading = false;
-        }, 500);
-      },
-      getCart() {
-        this.$http
-          .get(`${VITE_URL}/api/${VITE_PATH}/cart`)
-          .then((res) => {
-            this.cartsTotal = res.data.data;
-            this.shipping = parseInt(this.cartsTotal.total >= 500 ? 0 : 100);
-          })
-          .catch((err) => {
-            alert(err.response.data.message);
-          });
-      },
-      removeCart(id) {
-        this.loadingStatus = id;
-        this.$http
-          .delete(`${VITE_URL}/api/${VITE_PATH}/cart/${id}`)
-          .then((res) => {
-            this.loadingStatus = '';
-            alert(res.data.message);
-            this.getCart();
-          })
-          .catch((err) => {
-            alert(err.response.data.message);
-          });
-      },
-      removeCartsAll() {
-        this.$http
-          .delete(`${VITE_URL}/api/${VITE_PATH}/carts`)
-          .then((res) => {
-            alert(res.data.message);
-            this.getCart();
-          })
-          .catch((err) => {
-            alert(err.response.data.message);
-          });
-      },
-      setCartQty(cart) {
-        const data = {
-          product_id: cart.product_id,
-          qty: cart.qty,
-        };
-        this.loadingStatus = cart.id;
-        this.$http
-          .put(`${VITE_URL}/api/${VITE_PATH}/cart/${cart.id}`, { data })
-          .then((res) => {
-            this.loadingStatus = '';
-            alert(res.data.message);
-            this.getCart();
-          })
-          .catch((err) => {
-            alert(err.response.data.message);
-          });
-      },
+      // loading() {
+      //   this.isLoading = true;
+      //   setTimeout(() => {
+      //     this.isLoading = false;
+      //   }, 500);
+      // },
+      // getCart() {
+      //   this.$http
+      //     .get(`${VITE_URL}/api/${VITE_PATH}/cart`)
+      //     .then((res) => {
+      //       this.cartsTotal = res.data.data;
+
+      //       console.log(this.cartsTotal);
+      //       this.shipping = parseInt(this.cartsTotal.total >= 500 ? 0 : 100);
+      //     })
+      //     .catch((err) => {
+      //       alert(err.response.data.message);
+      //     });
+      // },
+      // removeCart(id) {
+      //   this.loadingStatus = id;
+      //   this.$http
+      //     .delete(`${VITE_URL}/api/${VITE_PATH}/cart/${id}`)
+      //     .then((res) => {
+      //       this.loadingStatus = '';
+      //       alert(res.data.message);
+      //       this.getCart();
+      //     })
+      //     .catch((err) => {
+      //       alert(err.response.data.message);
+      //     });
+      // },
+      // removeCartsAll() {
+      //   this.$http
+      //     .delete(`${VITE_URL}/api/${VITE_PATH}/carts`)
+      //     .then((res) => {
+      //       alert(res.data.message);
+      //       this.getCart();
+      //     })
+      //     .catch((err) => {
+      //       alert(err.response.data.message);
+      //     });
+      // },
+      // setCartQty(cart) {
+      //   const data = {
+      //     product_id: cart.product_id,
+      //     qty: cart.qty,
+      //   };
+      //   this.loadingStatus = cart.id;
+      //   this.$http
+      //     .put(`${VITE_URL}/api/${VITE_PATH}/cart/${cart.id}`, { data })
+      //     .then((res) => {
+      //       this.loadingStatus = '';
+      //       alert(res.data.message);
+      //       this.getCart();
+      //     })
+      //     .catch((err) => {
+      //       alert(err.response.data.message);
+      //     });
+      // },
       onSubmit() {
         if (this.cartsTotal.carts.length) {
           this.loading();
@@ -249,9 +255,16 @@
         const phoneNumber = /^(09)[0-9]{8}$/;
         return phoneNumber.test(value) ? true : '需為正確的手機號碼格式';
       },
+      ...mapActions(loadingStore, ['loading']),
+      ...mapActions(cartsStore, ['addToCart', 'getCart', 'removeCart', 'removeCartsAll', 'setCartQty']),
+    },
+    computed: {
+      ...mapState(cartsStore, ['cartsTotal', 'cartsTotalNum', 'shipping']),
+      ...mapState(loadingStore, ['isLoading', 'loadingStatus']),
     },
     mounted() {
       this.getCart();
+      this.loading();
     },
   };
 </script>

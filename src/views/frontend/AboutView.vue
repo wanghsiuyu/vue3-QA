@@ -1,4 +1,5 @@
 <template>
+  <VueLoading v-model:active="isLoading"></VueLoading>
   <!-- banner start-->
   <section class="mb-5 banner" style="height: 380px">
     <div class="container">
@@ -121,3 +122,18 @@
     @include block-title();
   }
 </style>
+<script>
+  import { mapState, mapActions } from 'pinia';
+  import loadingStore from '@/store/loadingStore.js';
+  export default {
+    methods: {
+      ...mapActions(loadingStore, ['loading']),
+    },
+    computed: {
+      ...mapState(loadingStore, ['isLoading']),
+    },
+    mounted() {
+      this.loading();
+    },
+  };
+</script>

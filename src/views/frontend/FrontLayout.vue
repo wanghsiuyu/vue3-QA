@@ -1,12 +1,3 @@
-<script>
-  import { RouterLink, RouterView } from 'vue-router';
-  export default {
-    components: {
-      RouterLink,
-      RouterView,
-    },
-  };
-</script>
 <template>
   <!-- navbar start-->
   <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-primary-light py-2 py-lg-3">
@@ -18,8 +9,9 @@
       <div class="d-flex align-items-center">
         <!--手機版 cart & login icon-->
         <div class="d-lg-none">
-          <RouterLink to="/order" class="navbar-brand">
+          <RouterLink to="/order" class="navbar-brand position-relative">
             <img src="../../assets/image/cart.svg" alt="cart" width="40" height="40" />
+            <span v-if="cartsTotalNum" class="position-absolute start-100 translate-middle badge rounded-pill bg-primary text-white" style="top: 6px">{{ cartsTotalNum }}</span>
           </RouterLink>
           <RouterLink to="/login" class="navbar-brand">
             <img src="../../assets/image/member.svg" alt="member" width="40" height="40" />
@@ -27,7 +19,6 @@
         </div>
         <!--漢堡按鈕-->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-          <!-- <span class="navbar-toggler-icon"></span> -->
           <img src="../../assets/image/menu.svg" alt="menu" width="40" height="40" />
         </button>
       </div>
@@ -50,8 +41,9 @@
       </div>
       <!--桌機版 cart & login icon-->
       <div class="d-none d-lg-block">
-        <RouterLink to="/order" class="navbar-brand">
+        <RouterLink to="/order" class="navbar-brand position-relative">
           <img src="@/assets/image/cart.svg" alt="cart" width="40" height="40" />
+          <span v-if="cartsTotalNum" class="position-absolute start-100 translate-middle badge rounded-pill bg-primary text-white" style="top: 6px">{{ cartsTotalNum }} </span>
         </RouterLink>
         <RouterLink to="/login" class="navbar-brand">
           <img src="@/assets/image/member.svg" alt="member" width="40" height="40" />
@@ -70,7 +62,6 @@
         <div class="d-flex flex-lg-column justify-content-between mb-8 mb-lg-0">
           <!-- logo -->
           <a href="#"><img src="@/assets/image/logo2.png" width="183" height="52" alt="logo" class="mb-lg-6" /></a>
-
           <!-- fb,IG,youtube -->
           <ul class="nav">
             <li class="nav-item">
@@ -204,3 +195,23 @@
   //   border-color: #4f8147;
   // }
 </style>
+<script>
+  import { RouterLink, RouterView } from 'vue-router';
+  import { mapState, mapActions } from 'pinia';
+  import cartsStore from '@/store/cartsStore.js';
+  export default {
+    components: {
+      RouterLink,
+      RouterView,
+    },
+    methods: {
+      ...mapActions(cartsStore, ['getCart']),
+    },
+    computed: {
+      ...mapState(cartsStore, ['cartsTotalNum']),
+    },
+    mounted() {
+      this.getCart();
+    },
+  };
+</script>

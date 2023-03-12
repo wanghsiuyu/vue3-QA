@@ -5,7 +5,8 @@ const status = loadingStore();
 const { VITE_URL, VITE_PATH } = import.meta.env;
 export default defineStore('cartsStore', {
   state: () => ({
-    cartsTotal: [],
+    cartsTotal: {},
+    cartsTotalNum: 0,
     shipping: 0,
   }),
   actions: {
@@ -21,7 +22,6 @@ export default defineStore('cartsStore', {
           status.loadingStatus = '';
           alert(res.data.message);
           this.getCart();
-          //   this.$refs.modal.productModal.hide();
         })
         .catch((err) => {
           alert(err.response.data.message);
@@ -32,6 +32,7 @@ export default defineStore('cartsStore', {
         .get(`${VITE_URL}/api/${VITE_PATH}/cart`)
         .then((res) => {
           this.cartsTotal = res.data.data;
+          this.cartsTotalNum = this.cartsTotal.carts.reduce((a, b) => a + b.qty, 0);
           this.shipping = parseInt(this.cartsTotal.total >= 500 ? 0 : 100);
         })
         .catch((err) => {

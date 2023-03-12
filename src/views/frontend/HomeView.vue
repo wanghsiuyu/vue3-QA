@@ -1,4 +1,5 @@
 <template>
+  <VueLoading v-model:active="isLoading"></VueLoading>
   <!-- banner start-->
   <section class="mt-14 mt-lg-20">
     <div class="home-banner bg-position-center bg-size-cover bg-no-repeat d-flex flex-column justify-content-center align-items-center px-6 px-lg-0">
@@ -360,10 +361,21 @@
 <script>
   import SwiperComment from '@/components/frontend/SwiperComment.vue';
   import SwiperHotFood from '@/components/frontend/SwiperHotFood.vue';
+  import { mapState, mapActions } from 'pinia';
+  import loadingStore from '@/store/loadingStore.js';
   export default {
     components: {
       SwiperComment,
       SwiperHotFood,
+    },
+    methods: {
+      ...mapActions(loadingStore, ['loading']),
+    },
+    computed: {
+      ...mapState(loadingStore, ['isLoading']),
+    },
+    mounted() {
+      this.loading();
     },
   };
 </script>
