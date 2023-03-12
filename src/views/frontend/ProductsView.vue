@@ -38,7 +38,7 @@
               :data-bs-target="`#${tab[1]}`"
               href="#"
               role="tab"
-              aria-controls="bowl"
+              aria-controls="`${tab[1]}`"
               aria-selected="false"
             >
               {{ tab[0] }}
@@ -183,6 +183,9 @@
     @include mobile() {
       top: 80px;
     }
+  }
+  .nav-link:focus {
+    border-color: transparent;
   }
   .add-to-cart-btn {
     display: none;
