@@ -9,6 +9,9 @@ const router = createRouter({
         el: to.hash,
       };
     }
+    return {
+      top: 0,
+    };
   },
   routes: [
     {
@@ -35,6 +38,10 @@ const router = createRouter({
         {
           path: 'order',
           component: () => import('../views/frontend/OrderView.vue'),
+        },
+        {
+          path: 'location',
+          component: () => import('../views/frontend/LocationView.vue'),
         },
       ],
     },

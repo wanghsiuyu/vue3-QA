@@ -1,11 +1,17 @@
 <template>
   <VueLoading v-model:active="isLoading"></VueLoading>
   <!-- banner start-->
-  <div class="mb-5 order-banner" style="height: 378px">
-    <div class="order-banner-plan">訂單確認</div>
-  </div>
+  <section class="mb-5 banner" style="height: 380px">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-sm-9 col-md-7 col-lg-5">
+          <h1 class="banner-plan fs-3 fs-lg-2">訂單確認</h1>
+        </div>
+      </div>
+    </div>
+  </section>
   <!-- banner end-->
-  <div class="container">
+  <section class="container">
     <!-- breadcrumb start-->
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb mb-5">
@@ -15,7 +21,7 @@
       </ol>
     </nav>
     <!-- breadcrumb end-->
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mb-20 mb-lg-8">
       <!-- 購物車 start -->
       <div class="col-8">
         <div class="mb-5">
@@ -138,7 +144,7 @@
       </div>
       <!-- 訂單連絡資訊 end -->
     </div>
-  </div>
+  </section>
 </template>
 <script>
   const { VITE_URL, VITE_PATH } = import.meta.env;
@@ -249,3 +255,11 @@
     },
   };
 </script>
+<style lang="scss" scoped>
+  .banner {
+    @include banner('https://images.unsplash.com/photo-1483137140003-ae073b395549?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80', bottom, cover);
+  }
+  .banner-plan {
+    @include banner-plan();
+  }
+</style>

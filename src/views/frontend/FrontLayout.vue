@@ -41,10 +41,10 @@
             <RouterLink to="/products" class="nav-link fs-lg-5 pt-3 mx-5 d-inline-block">線上訂餐</RouterLink>
           </li>
           <li class="nav-item mb-4 mb-lg-0">
-            <a class="nav-link fs-lg-5 pt-3 mx-5 d-inline-block" href="#">常見問題</a>
+            <RouterLink to="/#qa" class="nav-link fs-lg-5 pt-3 mx-5 d-inline-block">常見問題</RouterLink>
           </li>
           <li class="nav-item mb-4 mb-lg-0">
-            <RouterLink class="nav-link fs-lg-5 pt-3 mx-5 d-inline-block" to="/#location">門市資訊</RouterLink>
+            <RouterLink to="/location" class="nav-link fs-lg-5 pt-3 mx-5 d-inline-block">門市資訊</RouterLink>
           </li>
         </ul>
       </div>

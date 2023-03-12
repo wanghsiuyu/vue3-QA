@@ -149,6 +149,7 @@
     <div class="container">
       <SwiperComment></SwiperComment>
     </div>
+    <div id="qa"></div>
   </section>
   <!-- 好評推薦 end -->
   <!-- 常見問題 start -->
@@ -162,7 +163,7 @@
           <div class="accordion accordion-flush" id="accordionExample">
             <div class="accordion-item">
               <h2 class="accordion-header" id="headingOne">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                   <div class="d-flex flex-column align-items-start">
                     <h4 class="text-dark fs-6 fs-lg-4 mb-0">餐廳是否有提供訂位服務？</h4>
                     <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -176,7 +177,7 @@
             </div>
             <div class="accordion-item">
               <h2 class="accordion-header" id="heading2">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
                   <div class="d-flex flex-column align-items-start">
                     <h4 class="text-dark fs-6 fs-lg-4 mb-0">請問消費有提供刷卡服務嗎？</h4>
                     <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -190,7 +191,7 @@
             </div>
             <div class="accordion-item">
               <h2 class="accordion-header" id="heading3">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
                   <div class="d-flex flex-column align-items-start">
                     <h4 class="text-dark fs-6 fs-lg-4 mb-0">請問餐廳可以攜帶寵物嗎？</h4>
                     <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -204,7 +205,7 @@
             </div>
             <div class="accordion-item">
               <h2 class="accordion-header" id="heading2">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse">
                   <div class="d-flex flex-column align-items-start">
                     <h4 class="text-dark fs-6 fs-lg-4 mb-0">餐廳附近是否有停車格或停車場？</h4>
                     <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -218,7 +219,7 @@
             </div>
             <div class="accordion-item">
               <h2 class="accordion-header" id="heading2">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse2">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse2">
                   <div class="d-flex flex-column align-items-start">
                     <h4 class="text-dark fs-6 fs-lg-4 mb-0">線上訂購的運費如何計算？</h4>
                     <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -232,7 +233,7 @@
             </div>
             <div class="accordion-item">
               <h2 class="accordion-header" id="heading2">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse2">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse2">
                   <div class="d-flex flex-column align-items-start">
                     <h4 class="text-dark fs-6 fs-lg-4 mb-0">可以到店取餐嗎？</h4>
                     <div id="collapse6" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -250,38 +251,6 @@
     </div>
   </section>
   <!-- 常見問題 end -->
-  <!-- 門市資訊 start -->
-  <section class="py-8 py-lg-20" id="location">
-    <div class="text-center">
-      <h2 class="block-title position-relative fs-3 fs-lg-2 fw-lg-bold mb-5 mb-lg-10" style="z-index: 0">門市資訊</h2>
-    </div>
-    <div class="container">
-      <div class="row justify-content-center flex-column flex-lg-row">
-        <div class="col-lg-4 fs-6 fs-lg-5 text-center text-lg-start">
-          <img src="@/assets/image/logo1.png" alt="logo" width="100" height="100" class="mb-4" />
-          <p>台南市東區樂活路 59 號</p>
-          <p>訂位 / 06-2345678</p>
-          <p>週二 - 週日 / 10:30 am - 20:30 pm</p>
-          <p>餐點供應至 20:00 pm</p>
-          <p>週一公休</p>
-          <p>店內禁帶外食，感謝配合</p>
-        </div>
-        <div class="col-lg-4">
-          <div class="store mb-4"></div>
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.1736935595773!2d120.17949669414736!3d23.01739387434223!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346e77637a953ce7%3A0x5932de1ec2587f13!2z5qiC5rS76Lev!5e0!3m2!1szh-TW!2stw!4v1678418669447!5m2!1szh-TW!2stw"
-            width="100%"
-            height="175"
-            style="border: 0"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          ></iframe>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- 門市資訊 end -->
   <!-- Go to Top start -->
   <a href="#"><img src="@/assets/image/top.svg" alt="top" class="position-fixed topBtn" /></a>
   <!-- Go to Top end -->
@@ -303,28 +272,11 @@
     }
   }
   // banner end
-  // 每個區塊 title 偽元素 start
+  // title 偽元素 start
   .block-title {
-    display: inline-block;
-    &::after {
-      content: '';
-      position: absolute;
-      width: 84px;
-      height: 64px;
-      background-size: contain;
-      background-image: url(@/assets/image/title.svg);
-      top: -17px;
-      right: -20px;
-      z-index: -1;
-      @include mobile() {
-        width: 102px;
-        height: 77px;
-        top: -24px;
-        right: -29px;
-      }
-    }
+    @include block-title();
   }
-  // 每個區塊 title 偽元素 end
+  // title 偽元素 end
   // 七大堅持 start
   .feature-bg {
     @include mobile() {
@@ -367,27 +319,15 @@
       border: 2px solid transparent;
     }
   }
-  .accordion-button.collapsed {
-    border: 2px solid transparent;
-  }
   .accordion-button:not(.collapsed) {
     background-color: #fafafa;
     box-shadow: none;
     border: 2px solid #dfebe3;
   }
-
   .accordion-flush .accordion-item .accordion-button,
   .accordion-flush .accordion-item .accordion-button.collapsed {
     border-radius: 8px;
   }
-  .accordion-button {
-    background-color: #fafafa;
-  }
-  // 取消按鈕 focus 樣式
-  .accordion-button:focus {
-    box-shadow: none;
-  }
-  // icon
   .accordion-button::after,
   .accordion-button:not(.collapsed)::after {
     width: 24px;
@@ -402,15 +342,7 @@
     border: 0px solid transparent;
   }
   // 常見問題 end
-  // 門市資訊 start
-  .store {
-    background-image: url(@/assets/image/store.png);
-    height: 175px;
-    width: 100%;
-    background-size: cover;
-    background-position: center 0px;
-  }
-  // 門市資訊 end
+
   // Go to Top start
   .topBtn {
     width: 56px;
