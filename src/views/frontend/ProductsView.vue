@@ -189,6 +189,9 @@
   }
   .nav-link {
     border-bottom: 4px solid transparent;
+    &:hover {
+      border-color: transparent;
+    }
   }
   .nav-link.active {
     border-bottom: 4px solid #a8cf45;
