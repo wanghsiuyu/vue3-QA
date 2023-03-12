@@ -184,16 +184,18 @@
       top: 80px;
     }
   }
-  .nav-link:focus {
+  .nav-tabs .nav-link:focus {
     border-color: transparent;
   }
-  .nav-link {
+  .nav-tabs .nav-link {
     border-bottom: 4px solid transparent;
     &:hover {
       border-color: transparent;
+      transition: all 0.2s ease;
+      opacity: 0.8;
     }
   }
-  .nav-link.active {
+  .nav-tabs .nav-link.active {
     border-bottom: 4px solid #a8cf45;
   }
   .add-to-cart-btn {
