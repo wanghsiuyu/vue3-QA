@@ -187,6 +187,12 @@
   .nav-link:focus {
     border-color: transparent;
   }
+  .nav-link {
+    border-bottom: 4px solid transparent;
+  }
+  .nav-link.active {
+    border-bottom: 4px solid #a8cf45;
+  }
   .add-to-cart-btn {
     display: none;
   }
