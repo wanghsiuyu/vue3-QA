@@ -38,6 +38,20 @@ const router = createRouter({
         {
           path: 'order',
           component: () => import('../views/frontend/OrderView.vue'),
+          children: [
+            {
+              path: 'info',
+              component: () => import('../views/frontend/OrderInfo.vue'),
+            },
+            {
+              path: 'checkout',
+              component: () => import('../views/frontend/OrderCheckout.vue'),
+            },
+            {
+              path: 'finish',
+              component: () => import('../views/frontend/OrderFinish.vue'),
+            },
+          ],
         },
         {
           path: 'location',

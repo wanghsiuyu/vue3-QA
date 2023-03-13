@@ -315,6 +315,9 @@
   // 常見問題 start
   .accordion-button {
     padding: 16px;
+    &:hover {
+      background-color: #f0f8ec;
+    }
     @include mobile() {
       padding: 20px 24px;
       border: 2px solid transparent;

@@ -21,7 +21,7 @@
     </nav>
     <!-- breadcrumb end-->
     <!-- 產品列表 start-->
-    <div class="row justify-content-center mb-5">
+    <section class="row justify-content-center mb-5">
       <div class="col-12">
         <!-- 產品 nav-tabs start-->
         <ul class="nav sticky-top bg-light mb-6 nav-tab-top" id="myTab" role="tablist">
@@ -62,8 +62,8 @@
                         :disabled="loadingStatus === product.id"
                         @click="addToCart(product.id)"
                       >
-                        <i class="fas fa-spinner fa-pulse" v-if="loadingStatus === product.id"></i>
-                        <span v-else>加入購物車</span>
+                        <i class="fas fa-spinner fa-pulse me-2" v-if="loadingStatus === product.id"></i>
+                        <span>加入購物車</span>
                       </button>
                     </div>
                   </div>
@@ -102,8 +102,8 @@
                         :disabled="loadingStatus === product.id"
                         @click="addToCart(product.id)"
                       >
-                        <i class="fas fa-spinner fa-pulse" v-if="loadingStatus === product.id"></i>
-                        <span v-else>加入購物車</span>
+                        <i class="fas fa-spinner fa-pulse me-2" v-if="loadingStatus === product.id"></i>
+                        <span>加入購物車</span>
                       </button>
                     </div>
                   </div>
@@ -131,7 +131,7 @@
         </div>
         <!-- 產品 nav-tabs-content end-->
       </div>
-    </div>
+    </section>
     <!-- 產品列表 end-->
   </div>
 </template>

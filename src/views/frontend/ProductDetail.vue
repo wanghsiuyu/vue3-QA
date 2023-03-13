@@ -3,7 +3,7 @@
   <div class="container mt-20">
     <!--商品細節 start-->
     <div class="row py-4 py-lg-8">
-      <div class="col-lg-5">
+      <section class="col-lg-5">
         <!-- 手機 breadcrumb start-->
         <div class="d-lg-none">
           <nav aria-label="breadcrumb">
@@ -20,8 +20,8 @@
           <img v-else :src="selectImg" :alt="product.title" class="object-fit-cover w-100 mb-2 h-lg-img" height="250" />
           <img v-for="img in product.imagesUrl" :key="img" :src="img" :alt="product.title" width="80" height="80" class="object-fit-cover me-2" @click="selectImg = img" style="cursor: pointer" />
         </div>
-      </div>
-      <div class="col-lg-7">
+      </section>
+      <section class="col-lg-7">
         <!-- 桌機 breadcrumb start-->
         <div class="d-none d-lg-block">
           <nav aria-label="breadcrumb">
@@ -34,9 +34,6 @@
         </div>
         <!-- 桌機 breadcrumb end-->
         <h2 class="mb-2">{{ product.title }}</h2>
-        <!-- <div class="d-flex mb-4">
-          <span v-for="feature in product.checkboxFeatures" :key="feature" class="badge me-1 green bg-light-green">{{ feature }}</span>
-        </div> -->
         <h5 class="mb-2 mb-lg-3">
           <span v-for="feature in product.checkboxFeatures" :key="feature">
             <span v-if="feature === '純素'" class="badge fs-6 bg-primary-light text-primary px-2 py-1 me-1 me-lg-2">{{ feature }}</span>
@@ -85,7 +82,7 @@
             <li>我們提供外送的地區是台南市東區、中西區、永康區、安平區、南區、北區、仁德區、安南區，運費是 100 元。</li>
           </ol>
         </div>
-      </div>
+      </section>
     </div>
     <!--商品細節 end-->
   </div>

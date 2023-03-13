@@ -9,7 +9,7 @@
       <div class="d-flex align-items-center">
         <!--手機版 cart & login icon-->
         <div class="d-lg-none">
-          <RouterLink to="/order" class="navbar-brand position-relative">
+          <RouterLink to="/order/info" class="navbar-brand position-relative">
             <img src="../../assets/image/cart.svg" alt="cart" width="40" height="40" />
             <span v-if="cartsTotalNum" class="position-absolute start-100 translate-middle badge rounded-pill bg-primary text-white" style="top: 6px">{{ cartsTotalNum }}</span>
           </RouterLink>
@@ -41,7 +41,7 @@
       </div>
       <!--桌機版 cart & login icon-->
       <div class="d-none d-lg-block">
-        <RouterLink to="/order" class="navbar-brand position-relative">
+        <RouterLink to="/order/info" class="navbar-brand position-relative">
           <img src="@/assets/image/cart.svg" alt="cart" width="40" height="40" />
           <span v-if="cartsTotalNum" class="position-absolute start-100 translate-middle badge rounded-pill bg-primary text-white" style="top: 6px">{{ cartsTotalNum }} </span>
         </RouterLink>
@@ -59,7 +59,7 @@
   <footer class="bg-white">
     <div class="container py-8">
       <div class="d-lg-flex justify-content-between align-items-center pb-6 pb-lg-4 border-bottom">
-        <div class="d-flex flex-lg-column justify-content-between mb-8 mb-lg-0">
+        <div class="d-flex flex-lg-column justify-content-between align-items-center align-items-lg-start mb-8 mb-lg-0">
           <!-- logo -->
           <a href="#"><img src="@/assets/image/logo2.png" width="183" height="52" alt="logo" class="mb-lg-6" /></a>
           <!-- fb,IG,youtube -->
@@ -93,10 +93,10 @@
             <RouterLink to="/products" class="fs-lg-5 text-gray-dark me-13 mx-lg-5 d-inline-block">線上訂餐</RouterLink>
           </li>
           <li class="nav-item mb-6 mb-lg-0">
-            <a class="fs-lg-5 text-gray-dark me-13 mx-lg-5 d-inline-block" href="#">門市資訊</a>
+            <RouterLink to="/#qa" class="fs-lg-5 text-gray-dark me-13 mx-lg-5 d-inline-block">常見問題</RouterLink>
           </li>
           <li class="nav-item mb-6 mb-lg-0">
-            <a class="fs-lg-5 text-gray-dark me-13 mx-lg-5 d-inline-block" href="#">常見問題</a>
+            <RouterLink to="/location" class="fs-lg-5 text-gray-dark me-13 mx-lg-5 d-inline-block">門市資訊</RouterLink>
           </li>
         </ul>
         <!-- 連絡資訊 -->

@@ -87,13 +87,13 @@
         <h2 class="block-title position-relative fs-3 fs-lg-2 fw-lg-bold mb-8 mb-lg-15">我們是誰</h2>
       </div>
       <div class="row flex-lg-row-reverse justify-content-between mb-8 mb-lg-20">
-        <div class="col-lg-5">
+        <div class="col-lg-6">
           <figure class="figure">
             <img src="@/assets/image/founders.png" class="figure-img img-fluid" alt="founders" />
             <figcaption class="figure-caption text-center">我們的創辦人 Lisa、Gordon 和 Brian</figcaption>
           </figure>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-5">
           <div class="d-flex align-items-center h-100">
             <div class="fs-6 fs-lg-5 text-justify">
               <p>

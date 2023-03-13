@@ -9,7 +9,7 @@ export default defineStore('loadingStore', {
       this.isLoading = true;
       setTimeout(() => {
         this.isLoading = false;
-      }, 500);
+      }, 400);
     },
   },
 });
