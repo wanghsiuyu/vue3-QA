@@ -5,7 +5,6 @@ const status = loadingStore();
 const { VITE_URL, VITE_PATH } = import.meta.env;
 export default defineStore('cartsStore', {
   state: () => ({
-    // productQty: 1,
     cartsTotal: {},
     cartsTotalNum: 0,
     shipping: 0,

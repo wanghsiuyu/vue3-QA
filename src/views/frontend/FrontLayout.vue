@@ -32,7 +32,7 @@
             <RouterLink to="/products" class="nav-link fs-lg-5 pt-3 mx-5 d-inline-block">線上訂餐</RouterLink>
           </li>
           <li class="nav-item mb-4 mb-lg-0">
-            <RouterLink to="/#qa" class="nav-link fs-lg-5 pt-3 mx-5 d-inline-block">常見問題</RouterLink>
+            <RouterLink to="/#qa" class="nav-link fs-lg-5 pt-3 mx-5 d-inline-block" exact-active-class="exact-active">常見問題</RouterLink>
           </li>
           <li class="nav-item mb-4 mb-lg-0">
             <RouterLink to="/location" class="nav-link fs-lg-5 pt-3 mx-5 d-inline-block">門市資訊</RouterLink>
@@ -84,19 +84,19 @@
         <!-- 導航選單 -->
         <ul class="nav mb-2">
           <li class="nav-item mb-6 mb-lg-0">
-            <RouterLink to="/" class="me-21 mx-lg-5 fs-lg-5 text-gray-dark d-inline-block">首頁</RouterLink>
+            <RouterLink to="/" class="me-21 mx-lg-5 fs-lg-5 text-gray-dark d-inline-block" exact-active-class="exact-active">首頁</RouterLink>
           </li>
           <li class="nav-item mb-6 mb-lg-0">
-            <RouterLink to="/about" class="me-13 mx-lg-5 fs-lg-5 text-gray-dark d-inline-block">關於我們</RouterLink>
+            <RouterLink to="/about" class="me-13 mx-lg-5 fs-lg-5 text-gray-dark d-inline-block" exact-active-class="exact-active">關於我們</RouterLink>
           </li>
           <li class="nav-item mb-6 mb-lg-0">
-            <RouterLink to="/products" class="fs-lg-5 text-gray-dark me-13 mx-lg-5 d-inline-block">線上訂餐</RouterLink>
+            <RouterLink to="/products" class="fs-lg-5 text-gray-dark me-13 mx-lg-5 d-inline-block" exact-active-class="exact-active">線上訂餐</RouterLink>
           </li>
           <li class="nav-item mb-6 mb-lg-0">
-            <RouterLink to="/#qa" class="fs-lg-5 text-gray-dark me-13 mx-lg-5 d-inline-block">常見問題</RouterLink>
+            <RouterLink to="/#qa" class="fs-lg-5 text-gray-dark me-13 mx-lg-5 d-inline-block" exact-active-class="exact-active">常見問題</RouterLink>
           </li>
           <li class="nav-item mb-6 mb-lg-0">
-            <RouterLink to="/location" class="fs-lg-5 text-gray-dark me-13 mx-lg-5 d-inline-block">門市資訊</RouterLink>
+            <RouterLink to="/location" class="fs-lg-5 text-gray-dark me-13 mx-lg-5 d-inline-block" exact-active-class="exact-active">門市資訊</RouterLink>
           </li>
         </ul>
         <!-- 連絡資訊 -->
@@ -129,71 +129,9 @@
       height: 56px;
     }
   }
-
-  .nav-link {
-    border-bottom: 4px solid transparent;
-  }
-  .nav-link.active {
+  .nav-item .router-link-exact-active {
     border-bottom: 4px solid #a8cf45;
   }
-
-  // .border-green {
-  //   border-color: #a8cf45 !important;
-  // }
-  // .green {
-  //   color: #4f8147;
-  // }
-  // .bg-light-green {
-  //   background-color: #f0f8ec;
-  // }
-
-  // .mask {
-  //   width: 193px;
-  //   height: 200px;
-  //   overflow: hidden;
-  // }
-  // .mask img {
-  //   transition: all 0.8s ease;
-  // }
-  // .mask img:hover {
-  //   transform: scale(1.2, 1.2);
-  // }
-  // .img-cover {
-  //   object-fit: cover;
-  // }
-  // .line-clamp {
-  //   display: -webkit-box;
-  //   -webkit-box-orient: vertical;
-  //   -webkit-line-clamp: 2;
-  //   overflow: hidden;
-  // }
-  // .nav-tabs {
-  //   --bs-nav-tabs-border-width: 0px;
-  // }
-  // .nav-tabs .nav-link:focus {
-  //   border-color: transparent;
-  // }
-  // .nav-tabs .nav-link {
-  //   border-bottom: 3px solid transparent;
-  // }
-  // .nav-tabs .nav-link:hover {
-  //   border-color: #a8cf45;
-  //   transition: all 0.5s ease;
-  //   opacity: 0.8;
-  // }
-  // .nav-tabs .nav-link.active {
-  //   border-bottom: 3px solid #a8cf45;
-  // }
-  // .offcanvas.offcanvas-start {
-  //   width: 450px;
-  // }
-  // .table {
-  //   --bs-table-border-color: transparent;
-  // }
-  // .form-check-input:checked {
-  //   background-color: #4f8147;
-  //   border-color: #4f8147;
-  // }
 </style>
 <script>
   import { RouterLink, RouterView } from 'vue-router';

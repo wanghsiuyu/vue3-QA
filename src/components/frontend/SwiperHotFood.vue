@@ -1,38 +1,42 @@
 <template>
   <swiper :modules="modules" :navigation="navigation" :loop="true" :speed="800" :breakpoints="swiperOptions.breakpoints" :autoplay="{ delay: 2500, disableOnInteraction: false }">
-    <swiper-slide v-for="product in products" :key="product.id">
-      <div class="position-relative hover-show-btn">
-        <div class="hover-img-mask">
-          <img :src="product.imageUrl" :alt="product.title" class="w-100 d-block rounded-3 object-fit-cover mb-3 mb-lg-4" />
-          <button
-            type="button"
-            class="add-to-cart-btn btn btn-primary position-absolute bottom-0 start-50 translate-middle py-3 fs-5"
-            :disabled="loadingStatus === product.id"
-            @click="addToCart(product.id)"
-          >
-            <i class="fas fa-spinner fa-pulse" v-if="loadingStatus === product.id"></i>
-            <span v-else>加入購物車</span>
-          </button>
-        </div>
-      </div>
-      <RouterLink :to="`/product/${product.id}`">
-        <h5 class="mb-2 mb-lg-3">
-          <span v-for="feature in product.checkboxFeatures" :key="feature">
-            <span v-if="feature === '純素'" class="badge fs-6 bg-primary-light text-primary px-2 py-1 me-1 me-lg-2">{{ feature }}</span>
-            <span v-if="feature === '有機'" class="badge fs-6 px-2 py-1 me-1 me-lg-2" style="color: #2d9449; background-color: #ecf8f4">{{ feature }}</span>
-            <span v-if="feature === '無麩質'" class="badge fs-6 px-2 py-1 me-1 me-lg-2" style="color: #817447; background-color: #f8efec">{{ feature }}</span>
-            <span v-if="feature === '辣'" class="badge fs-6 px-2 py-1" style="color: #814747; background-color: #f8ecec">{{ feature }}</span>
-          </span>
-        </h5>
-        <h4 class="fs-5 fs-lg-4 text-dark mb-2 mb-lg-3">{{ product.title }}</h4>
-        <h5 class="text-primary mb-3 mb-lg-4 d-flex align-items-center">
-          NT${{ product.price }}
-          <span class="fs-6 text-gray-dark ms-2"
-            ><del>NT${{ product.origin_price }}</del></span
-          >
-        </h5>
-      </RouterLink>
-    </swiper-slide>
+    <template v-for="product in products" :key="product.id">
+      <template v-if="product.selectCategories === '超飽足果昔盆' || product.selectCategories === '輕食冷盤' || product.selectCategories === '湯品'">
+        <swiper-slide>
+          <div class="position-relative hover-show-btn">
+            <div class="hover-img-mask">
+              <img :src="product.imageUrl" :alt="product.title" class="w-100 d-block rounded-3 object-fit-cover mb-3 mb-lg-4" />
+              <button
+                type="button"
+                class="add-to-cart-btn btn btn-primary position-absolute bottom-0 start-50 translate-middle py-3 fs-5"
+                :disabled="loadingStatus === product.id"
+                @click="addToCart(product.id)"
+              >
+                <i class="fas fa-spinner fa-pulse" v-if="loadingStatus === product.id"></i>
+                <span v-else>加入購物車</span>
+              </button>
+            </div>
+          </div>
+          <RouterLink :to="`/product/${product.id}`">
+            <h5 class="mb-2 mb-lg-3">
+              <span v-for="feature in product.checkboxFeatures" :key="feature">
+                <span v-if="feature === '純素'" class="badge fs-6 bg-primary-light text-primary px-2 py-1 me-1 me-lg-2">{{ feature }}</span>
+                <span v-if="feature === '有機'" class="badge fs-6 px-2 py-1 me-1 me-lg-2" style="color: #2d9449; background-color: #ecf8f4">{{ feature }}</span>
+                <span v-if="feature === '無麩質'" class="badge fs-6 px-2 py-1 me-1 me-lg-2" style="color: #817447; background-color: #f8efec">{{ feature }}</span>
+                <span v-if="feature === '辣'" class="badge fs-6 px-2 py-1" style="color: #814747; background-color: #f8ecec">{{ feature }}</span>
+              </span>
+            </h5>
+            <h4 class="fs-5 fs-lg-4 text-dark mb-2 mb-lg-3">{{ product.title }}</h4>
+            <h5 class="text-primary mb-3 mb-lg-4 d-flex align-items-center">
+              NT${{ product.price }}
+              <span class="fs-6 text-gray-dark ms-2"
+                ><del>NT${{ product.origin_price }}</del></span
+              >
+            </h5>
+          </RouterLink>
+        </swiper-slide>
+      </template>
+    </template>
   </swiper>
   <div class="swiper-button-prev"></div>
   <div class="swiper-button-next"></div>

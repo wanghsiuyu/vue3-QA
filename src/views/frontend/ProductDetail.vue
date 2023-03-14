@@ -91,7 +91,6 @@
   import { RouterLink } from 'vue-router';
   import { mapState, mapActions } from 'pinia';
   import loadingStore from '@/store/loadingStore.js';
-  // import productsStore from '@/store/productsStore.js';
   import cartsStore from '@/store/cartsStore.js';
   const { VITE_URL, VITE_PATH } = import.meta.env;
   export default {
@@ -106,15 +105,8 @@
       RouterLink,
     },
     methods: {
-      // ...mapActions(productsStore, ['getProduct']),
       ...mapActions(loadingStore, ['loading']),
       ...mapActions(cartsStore, ['addToCart']),
-      // loading() {
-      //   this.isLoading = true;
-      //   setTimeout(() => {
-      //     this.isLoading = false;
-      //   }, 500);
-      // },
       getProduct() {
         const { id } = this.$route.params;
         this.$http
@@ -126,38 +118,8 @@
             alert(err.response.data.message);
           });
       },
-      // addToCart(product_id, qty = 1) {
-      //   const data = {
-      //     product_id,
-      //     qty,
-      //   };
-      //   this.loadingStatus = product_id;
-      //   this.$http
-      //     .post(`${VITE_URL}/api/${VITE_PATH}/cart`, { data })
-      //     .then((res) => {
-      //       this.loadingStatus = '';
-      //       alert(res.data.message);
-      //       this.getCart();
-      //     })
-      //     .catch((err) => {
-      //       alert(err.response.data.message);
-      //     });
-      // },
-      // getCart() {
-      //   this.$http
-      //     .get(`${VITE_URL}/api/${VITE_PATH}/cart`)
-      //     .then((res) => {
-      //       this.cartsTotal = res.data.data;
-      //       this.shipping = parseInt(this.cartsTotal.total >= 500 ? 0 : 100);
-      //     })
-      //     .catch((err) => {
-      //       alert(err.response.data.message);
-      //     });
-      // },
     },
     computed: {
-      // ...mapState(productsStore, ['product']),
-      //  ...mapState(cartsStore, ['productQty']),
       ...mapState(loadingStore, ['isLoading', 'loadingStatus']),
     },
     mounted() {

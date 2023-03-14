@@ -3,6 +3,7 @@ import { createRouter, createWebHashHistory } from 'vue-router';
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
   linkActiveClass: 'active',
+  // linkExactActiveClass: 'exact-active',
   scrollBehavior(to) {
     if (to.hash) {
       return {
@@ -44,7 +45,7 @@ const router = createRouter({
               component: () => import('../views/frontend/OrderInfo.vue'),
             },
             {
-              path: 'checkout',
+              path: 'checkout/:orderId',
               component: () => import('../views/frontend/OrderCheckout.vue'),
             },
             {
