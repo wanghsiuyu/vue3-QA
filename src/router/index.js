@@ -48,10 +48,6 @@ const router = createRouter({
               path: 'checkout/:orderId',
               component: () => import('../views/frontend/OrderCheckout.vue'),
             },
-            {
-              path: 'finish',
-              component: () => import('../views/frontend/OrderFinish.vue'),
-            },
           ],
         },
         {
