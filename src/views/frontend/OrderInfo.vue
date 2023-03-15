@@ -37,7 +37,7 @@
             <tr v-for="cart in cartsTotal.carts" :key="cart.id">
               <td class="d-flex align-items-center justify-content-between gap-5 gap-md-10 py-4">
                 <div>
-                  <a role="button" class="btn p-0" :class="{ disabled: loadingStatus === cart.id }" title="刪除品項" @click.prevent="removeCart(cart.id)" style="border-color: transparent">
+                  <a role="button" class="btn p-0" :class="{ disabled: loadingStatus === cart.id }" @click.prevent="removeCart(cart.id)" style="border-color: transparent">
                     <i class="fas fa-spinner fa-pulse" v-if="loadingStatus === cart.id"></i>
                     <img v-else src="@/assets/image/delete.svg" alt="delete" />
                   </a>

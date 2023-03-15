@@ -3,18 +3,18 @@
   <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-primary-light py-2 py-lg-3">
     <div class="container">
       <RouterLink to="/">
-        <img src="@/assets/image/logo2.png" width="113" height="32" alt="logo" class="img-fluid d-inline-block navbar-logo" />
+        <img src="@/assets/image/logo2.png" width="113" height="32" alt="logo" class="d-inline-block navbar-logo" />
       </RouterLink>
 
       <div class="d-flex align-items-center">
         <!--手機版 cart & login icon-->
         <div class="d-lg-none">
           <RouterLink to="/order/info" class="navbar-brand position-relative">
-            <img src="../../assets/image/cart.svg" class="img-fluid" alt="cart" width="40" height="40" />
+            <img src="../../assets/image/cart.svg" alt="cart" width="40" height="40" />
             <span v-if="cartsTotalNum" class="position-absolute start-100 translate-middle badge rounded-pill bg-primary text-white" style="top: 6px">{{ cartsTotalNum }}</span>
           </RouterLink>
           <RouterLink to="/login" class="navbar-brand">
-            <img src="../../assets/image/member.svg" class="img-fluid" alt="member" width="40" height="40" />
+            <img src="../../assets/image/member.svg" alt="member" width="40" height="40" />
           </RouterLink>
         </div>
         <!--漢堡按鈕-->
@@ -42,11 +42,11 @@
       <!--桌機版 cart & login icon-->
       <div class="d-none d-lg-block">
         <RouterLink to="/order/info" class="navbar-brand position-relative">
-          <img src="@/assets/image/cart.svg" class="img-fluid" alt="cart" width="40" height="40" />
+          <img src="@/assets/image/cart.svg" alt="cart" width="40" height="40" />
           <span v-if="cartsTotalNum" class="position-absolute start-100 translate-middle badge rounded-pill bg-primary text-white" style="top: 6px">{{ cartsTotalNum }} </span>
         </RouterLink>
         <RouterLink to="/login" class="navbar-brand">
-          <img src="@/assets/image/member.svg" class="img-fluid" alt="member" width="40" height="40" />
+          <img src="@/assets/image/member.svg" alt="member" width="40" height="40" />
         </RouterLink>
       </div>
     </div>
@@ -61,22 +61,22 @@
       <div class="d-lg-flex justify-content-between align-items-center pb-6 pb-lg-4 border-bottom">
         <div class="d-flex flex-lg-column justify-content-between align-items-center align-items-lg-start mb-8 mb-lg-0">
           <!-- logo -->
-          <a href="#"><img src="@/assets/image/logo2.png" width="183" height="52" alt="logo" class="img-fluid mb-lg-6" /></a>
+          <a href="#"><img src="@/assets/image/logo2.png" width="183" height="52" alt="logo" class="mb-lg-6" /></a>
           <!-- fb,IG,youtube -->
           <ul class="nav">
             <li class="nav-item">
               <a href="#" class="me-4">
-                <img src="@/assets/image/instagram.svg" alt="instagram" width="32" class="img-fluid text-dark" />
+                <img src="@/assets/image/instagram.svg" alt="instagram" width="32" class="text-dark" />
               </a>
             </li>
             <li class="nav-item">
               <a href="#" class="me-4">
-                <img src="@/assets/image/FB.svg" alt="FB" width="32" class="img-fluid" />
+                <img src="@/assets/image/FB.svg" alt="FB" width="32" />
               </a>
             </li>
             <li class="nav-item">
               <a href="#">
-                <img src="@/assets/image/youtube.svg" alt="youtube" width="32" class="img-fluid" />
+                <img src="@/assets/image/youtube.svg" alt="youtube" width="32" />
               </a>
             </li>
           </ul>
