@@ -10,6 +10,11 @@ const router = createRouter({
         el: to.hash,
       };
     }
+    // if (to.fullPath.match('#qa')) {
+    //   return {
+    //     top: 3000,
+    //   };
+    // }
     return {
       top: 0,
     };

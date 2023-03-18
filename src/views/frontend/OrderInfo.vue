@@ -19,7 +19,7 @@
       <div class="col-3 border-bottom border-5 border-gray">
         <div class="d-flex flex-column align-items-center">
           <div class="rounded-circle bg-gray text-white d-flex align-items-center justify-content-center mb-1" style="width: 20px; height: 20px">3</div>
-          <p class="text-gray mb-2 fw-bold">付款成功</p>
+          <p class="text-gray mb-2 fw-bold">完成訂購</p>
         </div>
       </div>
     </div>
@@ -43,10 +43,10 @@
                   <img :src="cart.product.imageUrl" class="object-fit-cover flex-shrink-0" width="80" height="80" alt="cart.product.title" />
                 </div>
                 <div class="d-flex align-items-center justify-content-between w-75">
-                  <div class="d-flex flex-column">
+                  <div>
                     <p class="mb-1">{{ cart.product.title }}</p>
                     <p class="mb-1">NT${{ cart.product.price }} / {{ cart.product.unit }}</p>
-                    <div class="mb-0 w-75">
+                    <div style="width: 80px">
                       <select v-model="cart.qty" class="form-select form-select-sm" @change="setCartQty(cart)" :disabled="loadingStatus === cart.id">
                         <option v-for="i in 20" :key="i + 1234" :value="i">{{ i }}</option>
                       </select>
@@ -59,7 +59,7 @@
           </tbody>
         </table>
         <!-- 購物車合計 -->
-        <button type="button" class="btn btn-sm btn-outline-primary mb-3" @click="removeCartsAll">清空購物車</button>
+        <button type="button" class="btn btn-sm btn-outline-gray mb-3" @click="removeCartsAll">清空購物車</button>
         <div class="d-flex justify-content-between">
           <p class="fs-6 mb-2">小計</p>
           <p class="fs-6 mb-2 fw-bold">NT${{ cartsTotal.total }}</p>
@@ -78,8 +78,8 @@
         </div>
       </section>
       <!-- 購物車 end -->
-      <!-- 表單 start -->
-      <section class="col-lg-6">
+      <!-- 訂單連絡資訊 start -->
+      <section class="col-lg-5">
         <div class="card border-0 bg-primary-light py-4 p-lg-5">
           <div class="card-body">
             <v-form v-slot="{ errors }" @submit="onSubmit" ref="form">
@@ -138,7 +138,7 @@
           </div>
         </div>
       </section>
-      <!-- 表單 end -->
+      <!-- 訂單連絡資訊 end -->
     </div>
   </div>
   <!-- 購物車為空時 -->

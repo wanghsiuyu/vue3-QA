@@ -33,7 +33,7 @@
             <RouterLink to="/products" class="nav-link fs-lg-5 pt-3 mx-5 d-inline-block">線上訂餐</RouterLink>
           </li>
           <li class="nav-item mb-4 mb-lg-0">
-            <RouterLink to="/#qa" class="nav-link fs-lg-5 pt-3 mx-5 d-inline-block" exact-active-class="exact-active">常見問題</RouterLink>
+            <a href="#/#qa" class="nav-link fs-lg-5 pt-3 mx-5 d-inline-block">常見問題</a>
           </li>
           <li class="nav-item mb-4 mb-lg-0">
             <RouterLink to="/location" class="nav-link fs-lg-5 pt-3 mx-5 d-inline-block">門市資訊</RouterLink>
@@ -88,19 +88,19 @@
         <!-- 導航選單 -->
         <ul class="nav mb-2">
           <li class="nav-item mb-6 mb-lg-0">
-            <RouterLink to="/" class="me-21 mx-lg-5 fs-lg-5 text-gray-dark d-inline-block" exact-active-class="exact-active">首頁</RouterLink>
+            <RouterLink to="/" class="me-21 mx-lg-5 fs-lg-5 text-gray-dark" exact-active-class="exact-active">首頁</RouterLink>
           </li>
           <li class="nav-item mb-6 mb-lg-0">
-            <RouterLink to="/about" class="me-13 mx-lg-5 fs-lg-5 text-gray-dark d-inline-block" exact-active-class="exact-active">關於我們</RouterLink>
+            <RouterLink to="/about" class="me-13 mx-lg-5 fs-lg-5 text-gray-dark" exact-active-class="exact-active">關於我們</RouterLink>
           </li>
           <li class="nav-item mb-6 mb-lg-0">
-            <RouterLink to="/products" class="fs-lg-5 text-gray-dark me-13 mx-lg-5 d-inline-block" exact-active-class="exact-active">線上訂餐</RouterLink>
+            <RouterLink to="/products" class="fs-lg-5 text-gray-dark me-13 mx-lg-5" exact-active-class="exact-active">線上訂餐</RouterLink>
           </li>
           <li class="nav-item mb-6 mb-lg-0">
-            <RouterLink to="/#qa" class="fs-lg-5 text-gray-dark me-13 mx-lg-5 d-inline-block" exact-active-class="exact-active">常見問題</RouterLink>
+            <RouterLink to="/#qa" class="fs-lg-5 text-gray-dark me-13 mx-lg-5" exact-active-class="exact-active">常見問題</RouterLink>
           </li>
           <li class="nav-item mb-6 mb-lg-0">
-            <RouterLink to="/location" class="fs-lg-5 text-gray-dark me-13 mx-lg-5 d-inline-block" exact-active-class="exact-active">門市資訊</RouterLink>
+            <RouterLink to="/location" class="fs-lg-5 text-gray-dark me-13 mx-lg-5" exact-active-class="exact-active">門市資訊</RouterLink>
           </li>
         </ul>
         <!-- 連絡資訊 -->
@@ -135,6 +135,10 @@
   }
   .nav-item .nav-link {
     border-bottom: 4px solid transparent;
+  }
+  .nav-item .nav-link:focus {
+    color: black;
+    border-bottom: 4px solid #a8cf45;
   }
   .nav-item .router-link-exact-active {
     border-bottom: 4px solid #a8cf45;
