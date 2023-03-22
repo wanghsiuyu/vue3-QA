@@ -8,7 +8,7 @@
       <div class="modal-body">
         <div class="container">
           <div class="row">
-            <div class="col-md-4">
+            <div class="col-lg-4">
               <div class="mb-4">
                 <label for="imageUrl" class="form-label">主要圖片</label>
                 <input type="text" class="form-control mb-2" id="imageUrl" aria-describedby="imageUrl" placeholder="請輸入圖片連結 或 選擇上傳圖片" v-model="tempProduct.imageUrl" />
@@ -44,7 +44,7 @@
                 <input type="file" class="form-control" id="files" ref="files" @change="upload" />
               </div>
             </div>
-            <div class="col-md-8">
+            <div class="col-lg-8">
               <div class="mb-3">
                 <label for="productName" class="form-label">商品名稱</label>
                 <input type="text" class="form-control" id="productName" aria-describedby="productName" placeholder="請輸入商品名稱" v-model="tempProduct.title" />

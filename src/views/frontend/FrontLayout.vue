@@ -126,7 +126,7 @@
   <!-- footer end -->
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .navbar-logo {
     @include mobile() {
       width: 198px;

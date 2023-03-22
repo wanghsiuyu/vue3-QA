@@ -1,41 +1,43 @@
 <template>
   <div class="container mt-20">
     <div class="text-end m-5">
-      <button type="button" class="btn btn-primary" @click="openModal('create')">建立新的產品</button>
+      <button type="button" class="btn btn-primary" @click="openModal('create')">新增產品</button>
     </div>
     <div class="row">
-      <!-- 商品列表 start -->
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th scope="col">商品 ID</th>
-            <th scope="col">類別</th>
-            <th scope="col">商品名稱</th>
-            <th scope="col">原價</th>
-            <th scope="col">售價</th>
-            <th scope="col">是否上架</th>
-            <th scope="col">操作</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="product in products" :key="product.id">
-            <td scope="row">{{ product.id }}</td>
-            <td>{{ product.selectCategories }}</td>
-            <td>{{ product.title }}</td>
-            <td>{{ product.origin_price }}</td>
-            <td>{{ product.price }}</td>
-            <td>
-              <span v-if="product.is_enabled" class="text-success">上架</span>
-              <span v-else>下架</span>
-            </td>
-            <td>
-              <button type="button" class="btn btn-outline-primary btn-sm me-1" @click="openModal('edit', product)">編輯</button>
-              <button type="button" class="btn btn-outline-danger btn-sm" @click="openModal('delete', product)">刪除</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <!-- 商品列表 end -->
+      <div class="col-12">
+        <!-- 商品列表 start -->
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">商品 ID</th>
+              <th scope="col">類別</th>
+              <th scope="col">商品名稱</th>
+              <th scope="col">原價</th>
+              <th scope="col">售價</th>
+              <th scope="col">是否上架</th>
+              <th scope="col">操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="product in products" :key="product.id">
+              <td scope="row">{{ product.id }}</td>
+              <td>{{ product.selectCategories }}</td>
+              <td>{{ product.title }}</td>
+              <td>{{ product.origin_price }}</td>
+              <td>{{ product.price }}</td>
+              <td>
+                <span v-if="product.is_enabled" class="text-success">上架</span>
+                <span v-else>下架</span>
+              </td>
+              <td>
+                <button type="button" class="btn btn-outline-primary btn-sm me-1" @click="openModal('edit', product)">編輯</button>
+                <button type="button" class="btn btn-outline-danger btn-sm" @click="openModal('delete', product)">刪除</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- 商品列表 end -->
+      </div>
       <!-- productModal-->
       <div class="modal fade" ref="productModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <ProductModalAll :product="tempProduct" :isNew="isNew" @update-product="updateProduct" @createImage="createImage"></ProductModalAll>
@@ -50,10 +52,11 @@
   </div>
 </template>
 <script>
-  import AdminPagination from '../../components/admin/AdminPagination.vue';
-  import ProductModalAll from '../../components/admin/ProductModal.vue';
+  import AdminPagination from '@/components/admin/AdminPagination.vue';
+  import ProductModalAll from '@/components/admin/ProductModal.vue';
   import Modal from 'bootstrap/js/dist/modal';
-  import DeleteProductModal from '../../components/admin/DeleteProductModal.vue';
+  import DeleteProductModal from '@/components/admin/DeleteProductModal.vue';
+  import Toast from '@/mixins/toast.js';
   let productModal;
   let deleteModal;
   const { VITE_URL, VITE_PATH } = import.meta.env;
@@ -86,7 +89,11 @@
             this.getProduct();
           })
           .catch((err) => {
-            alert(err.response.data.message);
+            Toast.fire({
+              icon: 'error',
+              title: err.response.data.message,
+              width: 250,
+            });
             this.$router.push('/login');
           });
       },
@@ -98,7 +105,11 @@
             this.page = res.data.pagination;
           })
           .catch((err) => {
-            alert(err.response.data.message);
+            Toast.fire({
+              icon: 'error',
+              title: err.response.data.message,
+              width: 250,
+            });
           });
       },
       updateProduct() {
@@ -116,10 +127,18 @@
           .then(() => {
             this.getProduct();
             productModal.hide();
-            alert(message);
+            Toast.fire({
+              icon: 'success',
+              title: message,
+              width: 250,
+            });
           })
           .catch((err) => {
-            alert(err.response.data.message);
+            Toast.fire({
+              icon: 'error',
+              title: err.response.data.message,
+              width: 250,
+            });
           });
       },
       deleteProduct() {
@@ -128,10 +147,18 @@
           .then(() => {
             this.getProduct();
             deleteModal.hide();
-            alert('刪除產品成功！');
+            Toast.fire({
+              icon: 'success',
+              title: '刪除產品成功！',
+              width: 250,
+            });
           })
           .catch((err) => {
-            alert(err.response.data.message);
+            Toast.fire({
+              icon: 'error',
+              title: err.response.data.message,
+              width: 250,
+            });
           });
       },
       createImage() {
@@ -163,12 +190,10 @@
         }
       },
     },
-
     mounted() {
       const myCookie = document.cookie.replace(/(?:(?:^|.*;\s*)myToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
       this.$http.defaults.headers.common['Authorization'] = myCookie;
       this.checkLogin();
-      this.getProduct();
       productModal = new Modal(this.$refs.productModal);
       deleteModal = new Modal(this.$refs.deleteModal);
     },

@@ -77,6 +77,14 @@ const router = createRouter({
           path: 'orders',
           component: () => import('../views/admin/AdminOrders.vue'),
         },
+        {
+          path: 'coupons',
+          component: () => import('../views/admin/AdminCoupons.vue'),
+        },
+        {
+          path: 'articles',
+          component: () => import('../views/admin/AdminArticles.vue'),
+        },
       ],
     },
   ],

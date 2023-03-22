@@ -53,9 +53,10 @@
 </template>
 <script>
   import Modal from 'bootstrap/js/dist/modal';
-  import AdminPagination from '../../components/admin/AdminPagination.vue';
-  import OrderModal from '../../components/admin/OrderModal.vue';
-  import DeleteOrderModal from '../../components/admin/DeleteOrderModal.vue';
+  import AdminPagination from '@/components/admin/AdminPagination.vue';
+  import OrderModal from '@/components/admin/OrderModal.vue';
+  import DeleteOrderModal from '@/components/admin/DeleteOrderModal.vue';
+  import Toast from '@/mixins/toast.js';
   const { VITE_URL, VITE_PATH } = import.meta.env;
   export default {
     data() {
@@ -82,7 +83,11 @@
             this.getOrders();
           })
           .catch((err) => {
-            alert(err.response.data.message);
+            Toast.fire({
+              icon: 'error',
+              title: err.response.data.message,
+              width: 250,
+            });
             this.$router.push('/login');
           });
       },
@@ -94,43 +99,71 @@
             this.page = res.data.pagination;
           })
           .catch((err) => {
-            alert(err.response.data.message);
+            Toast.fire({
+              icon: 'error',
+              title: err.response.data.message,
+              width: 250,
+            });
           });
       },
       confirmEdit() {
         this.$http
           .put(`${VITE_URL}/api/${VITE_PATH}/admin/order/${this.order.id}`, { data: this.order })
           .then((res) => {
-            alert(res.data.message);
+            Toast.fire({
+              icon: 'success',
+              title: res.data.message,
+              width: 250,
+            });
             this.editModal.hide();
             this.getOrders();
           })
           .catch((err) => {
-            alert(err.response.data.message);
+            Toast.fire({
+              icon: 'error',
+              title: err.response.data.message,
+              width: 250,
+            });
           });
       },
       deleteOrder() {
         this.$http
           .delete(`${VITE_URL}/api/${VITE_PATH}/admin/order/${this.order.id}`)
           .then((res) => {
-            alert(res.data.message);
+            Toast.fire({
+              icon: 'success',
+              title: res.data.message,
+              width: 250,
+            });
             this.deleteModal.hide();
             this.getOrders();
           })
           .catch((err) => {
-            alert(err.response.data.message);
+            Toast.fire({
+              icon: 'error',
+              title: err.response.data.message,
+              width: 250,
+            });
           });
       },
       deleteOrdersAll() {
         this.$http
           .delete(`${VITE_URL}/api/${VITE_PATH}/admin/orders/all`)
           .then((res) => {
-            alert(res.data.message);
+            Toast.fire({
+              icon: 'success',
+              title: res.data.message,
+              width: 250,
+            });
             this.deleteModal.hide();
             this.getOrders();
           })
           .catch((err) => {
-            alert(err.response.data.message);
+            Toast.fire({
+              icon: 'error',
+              title: err.response.data.message,
+              width: 250,
+            });
           });
       },
       openModal(status, order) {
