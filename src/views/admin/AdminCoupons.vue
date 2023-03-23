@@ -39,7 +39,7 @@
     </div>
   </div>
   <!-- 新增/編輯 Modal -->
-  <CouponModal ref="modal" :coupon="tempCoupon" @updateCoupon="updateCoupon"></CouponModal>
+  <CouponModal ref="modal" :coupon="tempCoupon" @updateCoupon="updateCoupon" :isNew="isNew"></CouponModal>
   <!-- 刪除 Modal -->
   <DeleteCouponModal ref="deleteModal" :coupon="tempCoupon" @deleteCoupon="deleteCoupon"></DeleteCouponModal>
   <!-- 優惠券分頁 -->

@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-xl">
       <div class="modal-content">
         <div class="modal-header bg-primary">
-          <h5 class="modal-title text-white" id="exampleModalLabel">新增貼文</h5>
+          <h5 class="modal-title text-white" id="exampleModalLabel">{{ isNew ? '新增' : '編輯' }}貼文</h5>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -50,7 +50,11 @@
                 <div class="mb-3">
                   <label for="description" class="form-label">文章描述</label>
                   <textarea type="text" class="form-control mb-3" id="description" placeholder="請輸入文章描述" v-model="tempArticle.description"></textarea>
-                  <ckeditor :editor="editor" v-model="editorData" :config="editorConfig"></ckeditor>
+                  <ckeditor :editor="editor" v-model="tempArticle.content" :config="editorConfig"></ckeditor>
+                </div>
+                <div class="mb-3 form-check">
+                  <input type="checkbox" class="form-check-input" id="isPublic" v-model="tempArticle.isPublic" />
+                  <label for="isPublic" class="form-check-label">是否啟用</label>
                 </div>
               </div>
             </div>
@@ -58,7 +62,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">取消</button>
-          <button type="button" class="btn btn-primary">確認</button>
+          <button type="button" class="btn btn-primary" @click="$emit('updateArticle', tempArticle)">確認</button>
         </div>
       </div>
     </div>
@@ -68,11 +72,11 @@
   import Modal from 'bootstrap/js/dist/modal';
   import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
   export default {
-    props: ['article'],
+    props: ['article', 'isNew'],
     data() {
       return {
         articleModal: '',
-        tempArticle: '',
+        tempArticle: {},
         create_at: '',
         editor: ClassicEditor,
         editorData: '',
@@ -84,9 +88,7 @@
     watch: {
       article() {
         this.tempArticle = this.article;
-        this.tempArticle.content = this.editorData;
         [this.create_at] = new Date(this.tempArticle.create_at * 1000).toISOString().split('T'); // 2023-03-22
-        console.log(this.tempArticle);
       },
       create_at() {
         this.tempArticle.create_at = Math.floor(new Date(this.create_at) / 1000); // 1679443200

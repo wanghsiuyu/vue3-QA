@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header bg-primary">
-          <h5 class="modal-title text-white" id="exampleModalLabel">新增優惠券</h5>
+          <h5 class="modal-title text-white" id="exampleModalLabel">{{ isNew ? '新增' : '編輯' }}優惠券</h5>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -41,7 +41,7 @@
 <script>
   import Modal from 'bootstrap/js/dist/modal';
   export default {
-    props: ['coupon'],
+    props: ['coupon', 'isNew'],
     data() {
       return {
         couponModal: '',
