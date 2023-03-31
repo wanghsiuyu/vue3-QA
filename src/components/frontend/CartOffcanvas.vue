@@ -1,12 +1,16 @@
 <template>
   <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasRight" ref="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header">
-      <h5 id="offcanvasRightLabel">購物車 ({{ cartsTotalNum }})</h5>
+      <h5 id="offcanvasRightLabel">
+        購物車 <span v-if="cartsTotalNum">({{ cartsTotalNum }})</span>
+      </h5>
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body pt-0">
       <div v-if="cartsTotal.carts?.length">
-        <!-- 購物車表格 -->
+        <div class="text-end">
+          <button type="button" class="btn btn-sm btn-outline-gray mb-2" @click="confirmRemove" style="font-size: 12px">清空購物車</button>
+        </div>
         <table class="table align-middle" style="font-size: 14px">
           <tbody>
             <tr class="border-bottom"></tr>
@@ -21,24 +25,22 @@
                 <div class="d-flex align-items-center justify-content-between w-75">
                   <div>
                     <p class="mb-1">{{ cart.product.title }}</p>
-                    <p class="mb-1">NT${{ cart.product.price }} / {{ cart.product.unit }}</p>
+                    <p class="mb-1">NT${{ $filters.toThousands(cart.product.price) }} / {{ cart.product.unit }}</p>
                     <div style="width: 80px">
                       <select v-model="cart.qty" class="form-select form-select-sm" @change="setCartQty(cart)" :disabled="loadingStatus === cart.id">
                         <option v-for="i in 20" :key="i + 1234" :value="i">{{ i }}</option>
                       </select>
                     </div>
                   </div>
-                  <p class="mb-0 text-end">NT${{ cart.total }}</p>
+                  <p class="mb-0 text-end">NT${{ $filters.toThousands(cart.total) }}</p>
                 </div>
               </td>
             </tr>
           </tbody>
         </table>
-        <!-- 購物車合計 -->
-        <button type="button" class="btn btn-sm btn-outline-gray mb-3" @click="removeCartsAll">清空購物車</button>
         <div class="d-flex justify-content-between">
           <p class="fs-6 mb-2">小計</p>
-          <p class="fs-6 mb-2 fw-bold">NT${{ cartsTotal.total }}</p>
+          <p class="fs-6 mb-2 fw-bold">NT${{ $filters.toThousands(cartsTotal.total) }}</p>
         </div>
         <div class="d-flex justify-content-between">
           <p class="fs-6 mb-2">
@@ -50,7 +52,7 @@
         </div>
         <div class="d-flex justify-content-between mb-2">
           <p class="fs-6 mb-2">總計</p>
-          <p class="fs-6 mb-2 fw-bold">NT${{ cartsTotal.final_total + shipping }}</p>
+          <p class="fs-6 mb-2 fw-bold">NT${{ $filters.toThousands(cartsTotal.total + shipping) }}</p>
         </div>
         <a href="#" class="btn btn-primary w-100 mb-2" @click.prevent="goOrderView()">訂單結帳</a>
       </div>
@@ -63,20 +65,22 @@
     </div>
   </div>
 </template>
+
 <script>
   import cartsStore from '@/store/cartsStore.js';
   import { mapActions, mapState } from 'pinia';
   import loadingStore from '@/store/loadingStore.js';
   import Offcanvas from 'bootstrap/js/dist/offcanvas';
+
   export default {
     data() {
       return {
         bsOffcanvas: '',
       };
     },
-    components: {},
     methods: {
-      ...mapActions(cartsStore, ['getCart', 'removeCart', 'removeCartsAll', 'setCartQty']),
+      ...mapActions(cartsStore, ['getCart', 'removeCart', 'confirmRemove', 'removeCartsAll', 'setCartQty']),
+
       goProductsView() {
         this.bsOffcanvas.hide();
         this.$router.push('/products');

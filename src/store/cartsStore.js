@@ -2,21 +2,18 @@ import { defineStore } from 'pinia';
 import axios from 'axios';
 import loadingStore from '@/store/loadingStore.js';
 import Toast from '@/mixins/toast.js';
-// import Offcanvas from 'bootstrap/js/dist/offcanvas';
+import Swal from 'sweetalert2';
+
 const status = loadingStore();
 const { VITE_URL, VITE_PATH } = import.meta.env;
 
 export default defineStore('cartsStore', {
   state: () => ({
-    // bsOffcanvas: '',
     cartsTotal: {},
     cartsTotalNum: 0,
     shipping: 0,
   }),
   actions: {
-    // toggleCart() {
-    //   this.bsOffcanvas.show();
-    // },
     addToCart(product_id, qty = 1) {
       const data = {
         product_id,
@@ -79,15 +76,35 @@ export default defineStore('cartsStore', {
           });
         });
     },
+    confirmRemove() {
+      const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: 'btn btn-danger ms-2',
+          cancelButton: 'btn btn-outline-danger',
+        },
+        buttonsStyling: false,
+      });
+      swalWithBootstrapButtons
+        .fire({
+          title: '您是否要刪除購物車所有商品？',
+          text: '刪除後將無法恢復',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: '確認刪除',
+          cancelButtonText: '取消',
+          reverseButtons: true,
+        })
+        .then((result) => {
+          if (result.isConfirmed) {
+            this.removeCartsAll();
+            swalWithBootstrapButtons.fire('已刪除！', '您的購物車已清空', 'success');
+          }
+        });
+    },
     removeCartsAll() {
       axios
         .delete(`${VITE_URL}/api/${VITE_PATH}/carts`)
-        .then((res) => {
-          Toast.fire({
-            icon: 'success',
-            title: res.data.message,
-            width: 250,
-          });
+        .then(() => {
           this.getCart();
         })
         .catch((err) => {
@@ -124,7 +141,4 @@ export default defineStore('cartsStore', {
         });
     },
   },
-  // mounted() {
-  //   this.bsOffcanvas = new Offcanvas(this.$refs.offcanvasRight);
-  // },
 });

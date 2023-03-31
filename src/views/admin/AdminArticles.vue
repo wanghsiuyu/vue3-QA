@@ -5,7 +5,6 @@
     </div>
     <div class="row">
       <div class="col-12">
-        <!-- 優惠券列表 start -->
         <table class="table table-hover">
           <thead>
             <tr>
@@ -34,17 +33,16 @@
             </tr>
           </tbody>
         </table>
-        <!-- 優惠券列表 end -->
       </div>
     </div>
   </div>
-  <!-- 新增/編輯 Modal -->
+  <!-- Modal -->
   <ArticleModal ref="modal" :article="tempArticle" :isNew="isNew" @updateArticle="updateArticle"></ArticleModal>
-  <!-- 刪除 Modal -->
   <DeleteArticleModal ref="deleteModal" :article="tempArticle" @deleteArticle="deleteArticle"></DeleteArticleModal>
-  <!-- 優惠券分頁 -->
+
   <AdminPagination :pages="page" @change-page="getArticles"></AdminPagination>
 </template>
+
 <script>
   import ArticleModal from '@/components/admin/ArticleModal.vue';
   import DeleteArticleModal from '@/components/admin/DeleteArticleModal.vue';
@@ -112,9 +110,9 @@
         this.$http
           .get(`${VITE_URL}/api/${VITE_PATH}/admin/article/${id}`)
           .then((res) => {
+            this.$refs.modal.articleModal.show();
             this.tempArticle = res.data.article;
             this.isNew = false;
-            this.$refs.modal.articleModal.show();
           })
           .catch((err) => {
             Toast.fire({

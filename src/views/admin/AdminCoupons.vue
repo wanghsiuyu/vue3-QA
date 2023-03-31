@@ -5,7 +5,6 @@
     </div>
     <div class="row">
       <div class="col-12">
-        <!-- 優惠券列表 start -->
         <table class="table table-hover">
           <thead>
             <tr>
@@ -34,17 +33,16 @@
             </tr>
           </tbody>
         </table>
-        <!-- 優惠券列表 end -->
       </div>
     </div>
   </div>
-  <!-- 新增/編輯 Modal -->
+  <!-- Modal -->
   <CouponModal ref="modal" :coupon="tempCoupon" @updateCoupon="updateCoupon" :isNew="isNew"></CouponModal>
-  <!-- 刪除 Modal -->
   <DeleteCouponModal ref="deleteModal" :coupon="tempCoupon" @deleteCoupon="deleteCoupon"></DeleteCouponModal>
-  <!-- 優惠券分頁 -->
+
   <AdminPagination :pages="page" @change-page="getCoupons"></AdminPagination>
 </template>
+
 <script>
   import CouponModal from '@/components/admin/CouponModal.vue';
   import DeleteCouponModal from '@/components/admin/DeleteCouponModal.vue';
@@ -160,7 +158,6 @@
           });
       },
     },
-
     mounted() {
       const myCookie = document.cookie.replace(/(?:(?:^|.*;\s*)myToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
       this.$http.defaults.headers.common['Authorization'] = myCookie;

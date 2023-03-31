@@ -7,6 +7,7 @@ import vue from '@vitejs/plugin-vue';
 export default defineConfig({
   plugins: [vue()],
   base: '/vue3-QA/',
+  // base: process.env.NODE_ENV === 'production' ? '/vue3-QA/' : '/',
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),

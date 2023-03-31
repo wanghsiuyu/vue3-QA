@@ -38,6 +38,7 @@
     </div>
   </div>
 </template>
+
 <script>
   import Modal from 'bootstrap/js/dist/modal';
   export default {
@@ -49,17 +50,14 @@
         due_date: '',
       };
     },
-    methods: {},
     watch: {
       coupon() {
         this.tempCoupon = this.coupon;
-        // 將時間格式改為 YYYY-MM-DD
-        // this.tempCoupon.due_date 為 1679390443.848
-        const dateAndTime = new Date(this.tempCoupon.due_date * 1000).toISOString().split('T'); // ['2023-03-21', '09:20:43.848Z']
-        [this.due_date] = dateAndTime; // ['2023-03-21']
+        const dateAndTime = new Date(this.tempCoupon.due_date * 1000).toISOString().split('T');
+        [this.due_date] = dateAndTime;
       },
       due_date() {
-        this.tempCoupon.due_date = Math.floor(new Date(this.due_date) / 1000); // 1679356800
+        this.tempCoupon.due_date = Math.floor(new Date(this.due_date) / 1000);
       },
     },
     mounted() {

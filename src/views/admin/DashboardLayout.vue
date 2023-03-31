@@ -37,6 +37,7 @@
     </div>
   </div>
 </template>
+
 <script>
   import { RouterLink, RouterView } from 'vue-router';
   const { VITE_URL } = import.meta.env;
@@ -64,6 +65,7 @@
     },
   };
 </script>
+
 <style lang="scss" scoped>
   .nav-link {
     border-left: 4px solid transparent;

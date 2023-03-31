@@ -1,15 +1,12 @@
 <template>
-  <!-- navbar start-->
   <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-primary-light py-2 py-lg-3">
     <div class="container">
       <RouterLink to="/">
         <img src="@/assets/image/logo2.png" width="113" height="32" alt="logo" class="d-inline-block navbar-logo" />
       </RouterLink>
-
       <div class="d-flex align-items-center">
         <!--手機版 cart & login icon-->
         <div class="d-lg-none">
-          <!-- offcanvas button -->
           <a role="button" class="navbar-brand position-relative" @click.prevent="toggleOffcanvas()" aria-controls="offcanvasRight">
             <img src="@/assets/image/cart.svg" alt="cart" width="40" height="40" />
             <span v-if="cartsTotalNum" class="position-absolute start-100 translate-middle badge rounded-pill bg-primary text-white" style="top: 6px">{{ cartsTotalNum }} </span>
@@ -33,6 +30,9 @@
             <RouterLink to="/products" class="nav-link fs-lg-5 pt-3 mx-5 d-inline-block">線上訂餐</RouterLink>
           </li>
           <li class="nav-item mb-4 mb-lg-0">
+            <RouterLink to="/blogs" class="nav-link fs-lg-5 pt-3 mx-5 d-inline-block">專欄文章</RouterLink>
+          </li>
+          <li class="nav-item mb-4 mb-lg-0">
             <a href="#/#qa" class="nav-link fs-lg-5 pt-3 mx-5 d-inline-block">常見問題</a>
           </li>
           <li class="nav-item mb-4 mb-lg-0">
@@ -42,7 +42,6 @@
       </div>
       <!--桌機版 cart & login icon-->
       <div class="d-none d-lg-block">
-        <!-- offcanvas button -->
         <a role="button" class="navbar-brand position-relative" @click.prevent="toggleOffcanvas()" aria-controls="offcanvasRight">
           <img src="@/assets/image/cart.svg" alt="cart" width="40" height="40" />
           <span v-if="cartsTotalNum" class="position-absolute start-100 translate-middle badge rounded-pill bg-primary text-white" style="top: 6px">{{ cartsTotalNum }} </span>
@@ -53,20 +52,42 @@
       </div>
     </div>
   </nav>
-  <!-- navbar end-->
-  <!-- 購物車 offcanvas -->
   <CartOffcanvas ref="offcanvas"></CartOffcanvas>
   <main>
     <RouterView></RouterView>
   </main>
-  <!-- footer start -->
+  <section>
+    <div class="bg-subscribe">
+      <div class="container py-12">
+        <div class="row">
+          <div class="col-lg-4">
+            <v-form v-slot="{ errors }" @submit="subscribe" ref="form" class="text-center text-lg-start px-5 px-lg-0">
+              <label class="form-label"><h5 class="">訂閱我們的文章，獲取最新消息！</h5></label>
+              <div class="input-group mb-3">
+                <v-field
+                  type="email"
+                  class="form-control"
+                  placeholder="請輸入您的信箱"
+                  name="信箱"
+                  :class="{ 'is-invalid': errors['信箱'] }"
+                  rules="email|required"
+                  aria-label="email"
+                  aria-describedby="button-addon2"
+                ></v-field>
+                <button class="btn btn-primary" type="submit" id="button-addon2" :disabled="errors['信箱']">立即訂閱</button>
+                <error-message name="信箱" class="invalid-feedback"></error-message>
+              </div>
+            </v-form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
   <footer class="bg-white">
     <div class="container py-8">
       <div class="d-lg-flex justify-content-between align-items-center pb-6 pb-lg-4 border-bottom">
         <div class="d-flex flex-lg-column justify-content-between align-items-center align-items-lg-start mb-8 mb-lg-0">
-          <!-- logo -->
           <a href="#"><img src="@/assets/image/logo2.png" width="183" height="52" alt="logo" class="mb-lg-6" /></a>
-          <!-- fb,IG,youtube -->
           <ul class="nav">
             <li class="nav-item">
               <a href="#" class="me-4">
@@ -85,7 +106,6 @@
             </li>
           </ul>
         </div>
-        <!-- 導航選單 -->
         <ul class="nav mb-2">
           <li class="nav-item mb-6 mb-lg-0">
             <RouterLink to="/" class="me-21 mx-lg-5 fs-lg-5 text-gray-dark" exact-active-class="exact-active">首頁</RouterLink>
@@ -97,13 +117,15 @@
             <RouterLink to="/products" class="fs-lg-5 text-gray-dark me-13 mx-lg-5" exact-active-class="exact-active">線上訂餐</RouterLink>
           </li>
           <li class="nav-item mb-6 mb-lg-0">
+            <RouterLink to="/blogs" class="fs-lg-5 text-gray-dark me-13 mx-lg-5" exact-active-class="exact-active">專欄文章</RouterLink>
+          </li>
+          <li class="nav-item mb-6 mb-lg-0">
             <RouterLink to="/#qa" class="fs-lg-5 text-gray-dark me-13 mx-lg-5" exact-active-class="exact-active">常見問題</RouterLink>
           </li>
           <li class="nav-item mb-6 mb-lg-0">
             <RouterLink to="/location" class="fs-lg-5 text-gray-dark me-13 mx-lg-5" exact-active-class="exact-active">門市資訊</RouterLink>
           </li>
         </ul>
-        <!-- 連絡資訊 -->
         <ul class="nav flex-column gap-3 gap-lg-4">
           <li class="nav-item">
             <a href="tel:+88662345678"> <img src="@/assets/image/phone.svg" alt="phone" width="24" class="me-3" />06-2345678 </a>
@@ -116,15 +138,58 @@
           </li>
         </ul>
       </div>
-      <!-- copyright -->
       <div class="d-lg-flex justify-content-between pt-6 pt-lg-4 text-gray">
         <p class="mb-2 mb-lg-0">Copyright © 2023 goodvegan.com | All Rights Reserved.</p>
         <p class="mb-0">本網站僅作為個人練習作品，無任何商業用途</p>
       </div>
     </div>
   </footer>
-  <!-- footer end -->
 </template>
+
+<script>
+  import { RouterLink, RouterView } from 'vue-router';
+  import { mapState, mapActions } from 'pinia';
+  import cartsStore from '@/store/cartsStore.js';
+  import CartOffcanvas from '@/components/frontend/CartOffcanvas.vue';
+  import Toast from '@/mixins/toast.js';
+  export default {
+    components: {
+      RouterLink,
+      RouterView,
+      CartOffcanvas,
+    },
+    methods: {
+      ...mapActions(cartsStore, ['getCart']),
+      toggleOffcanvas() {
+        this.$refs.offcanvas.bsOffcanvas.toggle();
+      },
+      navbarCollapse() {
+        const navLink = document.querySelectorAll('.nav-link');
+        const navbarCollapse = document.querySelector('.navbar-collapse');
+        navLink.forEach((item) => {
+          item.addEventListener('click', () => {
+            navbarCollapse.classList.remove('show');
+          });
+        });
+      },
+      subscribe() {
+        Toast.fire({
+          icon: 'success',
+          title: '您已成功提交資訊。感謝您的訂閱！',
+          width: 450,
+        });
+        this.$refs.form.resetForm();
+      },
+    },
+    computed: {
+      ...mapState(cartsStore, ['cartsTotalNum']),
+    },
+    mounted() {
+      this.getCart();
+      this.navbarCollapse();
+    },
+  };
+</script>
 
 <style lang="scss" scoped>
   .navbar-logo {
@@ -143,32 +208,16 @@
   .nav-item .router-link-exact-active {
     border-bottom: 4px solid #a8cf45;
   }
+  .bg-subscribe {
+    background-image: url('@/assets/image/bg-subscribe-s.png');
+    background-position: top;
+    background-size: cover;
+    background-color: rgba(221, 222, 220, 0.57);
+    background-blend-mode: multiply;
+    @include mobile() {
+      background-image: url('@/assets/image/bg-subscribe.jpg');
+      background-position: center;
+      background-attachment: fixed;
+    }
+  }
 </style>
-<script>
-  import { RouterLink, RouterView } from 'vue-router';
-  import { mapState, mapActions } from 'pinia';
-  import cartsStore from '@/store/cartsStore.js';
-  import CartOffcanvas from '@/components/frontend/CartOffcanvas.vue';
-  export default {
-    data() {
-      return {};
-    },
-    components: {
-      RouterLink,
-      RouterView,
-      CartOffcanvas,
-    },
-    methods: {
-      ...mapActions(cartsStore, ['getCart']),
-      toggleOffcanvas() {
-        this.$refs.offcanvas.bsOffcanvas.toggle();
-      },
-    },
-    computed: {
-      ...mapState(cartsStore, ['cartsTotalNum']),
-    },
-    mounted() {
-      this.getCart();
-    },
-  };
-</script>

@@ -68,6 +68,7 @@
     </div>
   </div>
 </template>
+
 <script>
   import Modal from 'bootstrap/js/dist/modal';
   import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
@@ -88,10 +89,10 @@
     watch: {
       article() {
         this.tempArticle = this.article;
-        [this.create_at] = new Date(this.tempArticle.create_at * 1000).toISOString().split('T'); // 2023-03-22
+        [this.create_at] = new Date(this.tempArticle.create_at * 1000).toISOString().split('T');
       },
       create_at() {
-        this.tempArticle.create_at = Math.floor(new Date(this.create_at) / 1000); // 1679443200
+        this.tempArticle.create_at = Math.floor(new Date(this.create_at) / 1000);
       },
     },
     mounted() {

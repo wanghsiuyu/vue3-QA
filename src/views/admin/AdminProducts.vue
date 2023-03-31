@@ -5,7 +5,6 @@
     </div>
     <div class="row">
       <div class="col-12">
-        <!-- 商品列表 start -->
         <table class="table table-hover">
           <thead>
             <tr>
@@ -23,8 +22,8 @@
               <td scope="row">{{ product.id }}</td>
               <td>{{ product.selectCategories }}</td>
               <td>{{ product.title }}</td>
-              <td>{{ product.origin_price }}</td>
-              <td>{{ product.price }}</td>
+              <td>{{ $filters.toThousands(product.origin_price) }}</td>
+              <td>{{ $filters.toThousands(product.price) }}</td>
               <td>
                 <span v-if="product.is_enabled" class="text-success">上架</span>
                 <span v-else>下架</span>
@@ -36,21 +35,20 @@
             </tr>
           </tbody>
         </table>
-        <!-- 商品列表 end -->
       </div>
-      <!-- productModal-->
+      <!-- Modal-->
       <div class="modal fade" ref="productModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <ProductModalAll :product="tempProduct" :isNew="isNew" @update-product="updateProduct" @createImage="createImage"></ProductModalAll>
+        <ProductModalAll ref="modal" :product="tempProduct" :isNew="isNew" @update-product="updateProduct" @createImage="createImage"></ProductModalAll>
       </div>
-      <!-- deleteModal-->
       <div class="modal fade" ref="deleteModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <DeleteProductModal :tempProduct="tempProduct" :deleteProduct="deleteProduct"></DeleteProductModal>
       </div>
-      <!-- 商品分頁 -->
+
       <AdminPagination :pages="page" @change-page="getProduct"></AdminPagination>
     </div>
   </div>
 </template>
+
 <script>
   import AdminPagination from '@/components/admin/AdminPagination.vue';
   import ProductModalAll from '@/components/admin/ProductModal.vue';
@@ -113,11 +111,9 @@
           });
       },
       updateProduct() {
-        // 新增
         let url = `${VITE_URL}/api/${VITE_PATH}/admin/product`;
         let method = 'post';
         let message = '新增產品成功！';
-        // 編輯
         if (!this.isNew) {
           url = `${VITE_URL}/api/${VITE_PATH}/admin/product/${this.tempProduct.id}`;
           method = 'put';
@@ -167,7 +163,6 @@
       },
       openModal(status, product) {
         if (status === 'create') {
-          // 新增
           productModal.show();
           this.isNew = true;
           this.tempProduct = {
@@ -179,12 +174,10 @@
             imagesUrl: [],
           };
         } else if (status === 'edit') {
-          // 編輯
           productModal.show();
           this.isNew = false;
           this.tempProduct = { ...product };
         } else if (status === 'delete') {
-          // 刪除
           deleteModal.show();
           this.tempProduct = { ...product };
         }
@@ -196,6 +189,9 @@
       this.checkLogin();
       productModal = new Modal(this.$refs.productModal);
       deleteModal = new Modal(this.$refs.deleteModal);
+      this.$refs.productModal.addEventListener('hidden.bs.modal', () => {
+        this.$refs.modal.resetForm();
+      });
     },
   };
 </script>
